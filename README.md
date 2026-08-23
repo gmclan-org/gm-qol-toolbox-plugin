@@ -543,6 +543,7 @@ Results in `!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_``abc
   an editor, results may differ slightly from what's on screen. Also, it means scanning disk a lot.
 - References built dynamically from strings (e.g.
   `asset_get_index("obj_" + x)`) are not detected.
+- Not tested with Code Editor 2
 
 ## Bug Reports
 
