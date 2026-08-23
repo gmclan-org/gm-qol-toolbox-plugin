@@ -18,15 +18,18 @@ Made by [gmclan.org](https://gmclan.org).
 
 ## What does it add?
 
-Each item below is tagged with where you'll actually find it in the IDE.
+**Plugins Menu**
 
-- **GM QoL Toolbox Options** *(`File > Preferences`, or `Plugins` menu)* —
-  a real preferences page to turn each feature below on or off
+- **GM QoL Toolbox Options** *(`File > Preferences`, or `Plugins` menu)*
+  — a real preferences page to turn every feature below on or off
   individually, plus a couple of settings like how many recent resources
   to remember. Stored in its own file, never in GameMaker's own
   preferences.
 - **Check Object Usage** *(`Plugins` menu)* — finds where a given object
   is used (objects, rooms, parents, code).
+
+**Object Editor**
+
 - **Usage button** *(Object Editor)* — opens the full Check Object Usage
   report for the object you're currently editing, without leaving its
   edit window.
@@ -41,12 +44,15 @@ Each item below is tagged with where you'll actually find it in the IDE.
 - **`Collision (Select)...`** *(Object Editor → Add/Change Event)* — the
   same searchable object picker as Check Object Usage, next to the
   built-in `Collision` submenu.
+
+**Image Editor**
+
 - **`Convert to Frames` with an Auto checkbox** *(Image Editor → strip
   import dialog)* — computes Number of Frames / Frames per Row
   automatically from the image size and Frame Width/Height.
-- **`F11`** *(global hotkey)* — collapses/expands only the bottom dock
-  (Output, Search Results, etc.), unlike the native `F12`, which does it
-  for all three docks at once.
+
+**Navigation**
+
 - **`Find in Resource Tree`** *(right-click a resource window/tab)* —
   selects it in the Asset Tree.
 - **`Rearrange Windows`** *(right-click empty workspace canvas)* — lines
@@ -57,6 +63,9 @@ Each item below is tagged with where you'll actually find it in the IDE.
   at the bottom of a submenu with 500 entries.
 - **`Shift+F4`** *(global hotkey)* — a list of the last 30 resources by
   open/close order, a quick way back to something you just closed.
+
+**Room Editor**
+
 - **Move Assets** *(Room Editor toolbar, or the `M` key)* — shifts the
   selected layer or all layers by a given offset.
 - **Room Assets Palette** *(Room Editor toolbar)* — quickly insert
@@ -68,17 +77,31 @@ Each item below is tagged with where you'll actually find it in the IDE.
   hold `I`)* — a red rectangle (50% opacity) around every instance with
   overridden Variables or its own Creation Code.
 
+**Docking**
+
+- **`F11`** *(global hotkey)* — collapses/expands only the bottom dock
+  (Output, Search Results, etc.), unlike the native `F12`, which does it
+  for all three docks at once.
+
 ## Requirements
 
 - **GameMaker LTS 2026** (that specific release line — the plugin links
   against internal IDE assemblies; it will not load on Monthly/Beta)
 - Windows
 
+## Download
+
+**[⬇ Download the latest version](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases/latest)**
+— grabs the packaged ZIP from the newest Release.
+
+Alternatively, `Code → Download ZIP` on this repo always gives you the
+current build too, if you'd rather not deal with the Releases page.
+
 ## Installation
 
 1. Close GameMaker.
-2. Download the plugin (see below) and open PowerShell in the folder
-   containing `install.ps1`, `uninstall.ps1`, `GmclanToolboxPlugin.dll` and
+2. Extract the ZIP and open PowerShell in that folder — it should contain
+   `install.ps1`, `uninstall.ps1`, `GmclanToolboxPlugin.dll` and
    `GmclanToolboxPlugin.gmplugin`.
 
    Windows sometimes flags `.ps1` files downloaded from the internet with
@@ -107,13 +130,6 @@ The installer copies `GmclanToolboxPlugin.dll` + `GmclanToolboxPlugin.gmplugin`
 to `C:\ProgramData\GameMakerStudio2-LTS2026\Plugins\GmclanToolboxPlugin\`
 and registers the plugin in `plugins.json` (adds an entry, leaves other
 plugins alone).
-
-### Where to get it
-
-- **[Releases](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases)**
-  — a versioned, packaged ZIP for each release.
-- **Code → Download ZIP** on this repo also works and always gives you the
-  latest build, if you'd rather not deal with the Releases page.
 
 ## Uninstalling
 
