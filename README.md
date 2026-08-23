@@ -110,8 +110,8 @@ plugins alone).
 
 ### Where to get it
 
-- **Releases** (this repo's Releases page) — a versioned, packaged ZIP for
-  each release.
+- **[Releases](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases)**
+  — a versioned, packaged ZIP for each release.
 - **Code → Download ZIP** on this repo also works and always gives you the
   latest build, if you'd rather not deal with the Releases page.
 
