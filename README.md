@@ -1,12 +1,13 @@
 # GM QoL Toolbox — plugin for the GameMaker IDE
 
-[![Buy me a coffee](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-FFDD00?style=for-the-badge)](https://buycoffee.to/gnysek)
+> [!TIP]
+> If you like this plugin, please consider donating us - money goes into contribution to non-comercial website gmclan.org . [![Buy me a coffee](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-FFDD00?style=for-the-badge)](https://buycoffee.to/gnysek)
 
 A quality-of-life plugin for the GameMaker LTS 2026 IDE — developer tools
 for checking object usage in a project, plus a handful of small editor UI
 improvements.
 
-Made by [gmclan.org](https://gmclan.org).
+Made by @gnysek from [gmclan.org](https://gmclan.org).
 
 > [!CAUTION]
 > **Not affiliated with, endorsed by, or maintained by YoYo Games.** This
@@ -16,17 +17,36 @@ Made by [gmclan.org](https://gmclan.org).
 > in their release schedule. **Please report bugs and issues about this
 > plugin [here](#bug-reports), never to YYG.**
 
+> [!WARNING]
+> **Do not report bugs about this plugin to YoYo Games.** See "Bug reports" and "Disclaimer" setctions on bottom of page.
+
+> [!IMPORTANT]
+>Transparency notice: this plugin was made with help of AI, but QA is always made by human.
+
+## Contents
+
+  * [What does it add?](#what-does-it-add)
+  * [Requirements](#requirements)
+  * [Download](#download)
+  * [Installation](#installation)
+  * [Uninstalling](#uninstalling)
+  * [Features in detail](#features-in-detail)
+  * [Known limitations](#known-limitations)
+  * [Bug Reports](#bug-reports)
+  * [Disclaimer](#disclaimer)
+  * [License](#license)
+
 ## What does it add?
 
-**Plugins Menu**
+**Plugins Menu** in top bar
 
+- **Check Object Usage** *(`Plugins` menu)* — finds where a given object
+  is used (objects, rooms, parents, code).
 - **GM QoL Toolbox Options** *(`File > Preferences`, or `Plugins` menu)*
   — a real preferences page to turn every feature below on or off
   individually, plus a couple of settings like how many recent resources
   to remember. Stored in its own file, never in GameMaker's own
   preferences.
-- **Check Object Usage** *(`Plugins` menu)* — finds where a given object
-  is used (objects, rooms, parents, code).
 
 **Object Editor**
 
@@ -42,14 +62,24 @@ Made by [gmclan.org](https://gmclan.org).
   Editor → Events window, right-click or middle-click a Collision
   event)* — opens the editor for the object it collides with.
 - **`Collision (Select)...`** *(Object Editor → Add/Change Event)* — the
-  same searchable object picker as Check Object Usage, next to the
-  built-in `Collision` submenu.
+  same searchable object picker as when searching for parent/child objects, and similar to when selecting sprites for object.
+
+**Sprite Editor**
+
+- **Check Sprite Usage** *(`Plugins` menu)* — finds where a given sprite
+  is used (objects, rooms, code), plus an orphan-sprite finder. Only
+  added if the separate SpriteUsage plugin isn't already installed —
+  that one already provides this, so this plugin steps aside instead of
+  duplicating it.
+- **Usage section** *(Sprite Editor properties panel, and docked
+  Inspector when a sprite is selected)* — object/room/code usage counts
+  at a glance, with a link to the full report.
 
 **Image Editor**
 
 - **`Convert to Frames` with an Auto checkbox** *(Image Editor → strip
-  import dialog)* — computes Number of Frames / Frames per Row
-  automatically from the image size and Frame Width/Height.
+  import dialog)* — computes `Number of Frames` / `Frames per Row`
+  automatically from the image size and `Frame Width`/`Frame Height`.
 
 **Navigation**
 
@@ -76,12 +106,27 @@ Made by [gmclan.org](https://gmclan.org).
 - **Highlighting instances with overrides** *(Room Editor toolbar, or
   hold `I`)* — a red rectangle (50% opacity) around every instance with
   overridden Variables or its own Creation Code.
+- **Width/Height in pixels ("Scale in px")** *(instance/sprite-asset
+  properties window, and docked Inspector)* — an editable pixel
+  Width/Height next to the native Scale X/Scale Y, kept in sync with it.
+  Only added if the separate SpriteUsage plugin isn't already installed —
+  that one already provides this, so this plugin steps aside instead of
+  duplicating it.
 
 **Docking**
 
 - **`F11`** *(global hotkey)* — collapses/expands only the bottom dock
   (Output, Search Results, etc.), unlike the native `F12`, which does it
   for all three docks at once.
+
+**Font Editor**
+
+- **`Copy Range as Text`** *(Font Editor, below `Regenerate`)* — copies
+  every character across every defined range to the clipboard as one
+  continuous string, ready to paste into an external tool (e.g.
+  Photoshop) to design a matching pixel font.
+
+If new preferences are added in future releases, it will show default GM notification balloon with link to Preferences window, so you can disable what you don't like. By default all features are enabled.
 
 ## Requirements
 
@@ -92,7 +137,7 @@ Made by [gmclan.org](https://gmclan.org).
 ## Download
 
 **[⬇ Download the latest version](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases/latest)**
-— grabs the packaged ZIP from the newest Release.
+— grabs the packaged ZIP from the newest [Release](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases/).
 
 Alternatively, `Code → Download ZIP` on this repo always gives you the
 current build too, if you'd rather not deal with the Releases page.
@@ -142,7 +187,30 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ## Features in detail
 
-**GM QoL Toolbox Options**:
+Quick jump:
+
+  * [GM QoL Toolbox Options](#gm-qol-toolbox-options)
+  * [Plugins → Check Object Usage](#check-object-usage)
+  * [Object Editor — Usage button](#object-editor-usage-button)
+  * [Inspector — Usage section (objects)](#inspector-usage-section)
+  * [Object Editor — green section icons](#object-editor-green-icons)
+  * [Object Editor — opening the collision object](#object-editor-events-open-collision)
+  * [Object Editor — `Collision (Select)...`](#object-editor-collision-select)
+  * [Plugins → Check Sprite Usage](#check-sprite-usage)
+  * [Sprite Editor — Usage section](#sprite-editor-usage-section)
+  * [Inspector — Usage section (sprites)](#inspector-usage-section-sprites)
+  * [Image Editor — `Convert to Frames` Auto checkbox](#image-editor-convert-to-frames-auto)
+  * [`F11` — collapsing/expanding the bottom dock](#f11-bottom-dock)
+  * [Resource editors — `Find in Resource Tree`](#find-in-resource-tree)
+  * [Workspace — `Rearrange Windows` / `Close All Windows`](#rearrange-close-windows)
+  * [`Shift+F4` — Recent Resources](#shift-f4-recent-resources)
+  * [Room Editor — Move Assets](#room-editor-move-assets)
+  * [Room Editor — Room Assets Palette](#room-editor-assets-palette)
+  * [Room Editor — highlighting instances with overrides (`I`)](#room-editor-highlight-overrides)
+  * [Room Editor / Inspector — Width/Height in pixels ("Scale in px")](#room-editor-width-height)
+  * [Font Editor — `Copy Range as Text`](#font-editor-copy-range)
+
+### <a id="gm-qol-toolbox-options"></a>GM QoL Toolbox Options
 
 - Open it from `File > Preferences > GM QoL Toolbox` or from `Plugins →
   GM QoL Toolbox Options...` — both land on the same page.
@@ -161,10 +229,12 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
   explains the plugin is independent of YoYo Games (see Disclaimer below)
   and links straight to this page. If a later update adds new options, a
   one-time notification (top-right corner) points here too.
+  > [!IMPORTANT]
+  > **By default, all (new) features are enabled.**
 
 ![GM QoL Toolbox Preferences window](images/preferences.png)
 
-**`Plugins → Check Object Usage`**:
+### <a id="check-object-usage"></a>`Plugins → Check Object Usage`
 
 - **Select object...** — the native object picker (the same one used in
   the Object Editor's "Parent" field). Selecting one runs the scan
@@ -184,7 +254,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Check Object Usage window](images/check-object-usage.png)
 
-**Object Editor — Usage button**:
+### <a id="object-editor-usage-button"></a>Object Editor — Usage button
 
 - In the compact object edit window (Asset Browser → Edit), a new
   **Usage** button under Variable Definitions opens the full "Check
@@ -192,7 +262,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Object Usage button](images/object-usage-object.png)
 
-**Inspector — Usage section (objects)**:
+### <a id="inspector-usage-section"></a>Inspector — Usage section (objects)
 
 - The docked Inspector (the properties panel shown when an object is
   selected in the Asset Browser) shows a collapsible **Usage** category,
@@ -203,7 +273,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Object Inspector Usage section](images/object-usage-inspector.png)
 
-**Object Editor — green section icons**:
+### <a id="object-editor-green-icons"></a>Object Editor — green section icons
 
 - In the compact object edit window (opened from the Asset Browser), the
   icons next to **Parent** and **Variable Definitions** light up green
@@ -212,7 +282,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Object green icons](images/green-icons.png)
 
-**Object Editor — "Events" window: opening the collision object**:
+### <a id="object-editor-events-open-collision"></a>Object Editor — "Events" window: opening the collision object
 
 - Right-clicking a **Collision** event in the Events window adds a new
   entry to the existing menu (alongside Add/Cut/Copy/Paste/Duplicate/
@@ -225,7 +295,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Open object context menu](images/open-object-context.png)
 
-**Object Editor — "Add Event"/"Change Event": `Collision (Select)...`**:
+### <a id="object-editor-collision-select"></a>Object Editor — "Add Event"/"Change Event": `Collision (Select)...`
 
 - Next to the built-in `Collision` submenu (which lists every object
   alphabetically, ignoring your Asset Tree folder order, and needs
@@ -238,7 +308,57 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 ![Collision select](images/collision-select.png)
 ![Collision select popup](images/collision-select-popup.png)
 
-**Image Editor — `Convert to Frames`: "Auto" checkbox**:
+### <a id="check-sprite-usage"></a>`Plugins → Check Sprite Usage`
+
+- **Select sprite...** — the native sprite picker. Selecting one runs the
+  scan immediately.
+- **Check usage** — re-runs the scan for the currently selected sprite.
+- **Find orphans** — scans every sprite in the project and lists the ones
+  with no usage at all (no project reference, no GML/.yy hit).
+- Results in three sections:
+  - **PROJECT RESOURCES** — every typed reference to the sprite from the
+    project model (objects using it as sprite or collision mask, rooms,
+    tile sets, particle systems, ...), grouped by resource type.
+  - **GML CODE** — a search of the project's `*.gml` files for the
+    sprite's name.
+  - **OTHER .yy FILES** — other resource files mentioning the sprite's
+    name, skipping anything already listed under PROJECT RESOURCES.
+- Every result row opens the corresponding resource; code hits jump
+  straight to the matching line.
+- Only added to the `Plugins` menu if the separate SpriteUsage plugin
+  isn't already installed — that plugin already provides this exact
+  feature, so this one steps aside instead of duplicating it.
+
+### <a id="sprite-editor-usage-section"></a>Sprite Editor — Usage section
+
+- At the bottom of the Sprite Editor's properties panel (below Nine
+  Slice/Texture Settings), a collapsible **Usage** section, matching the
+  built-in sections around it.
+- Shows **Objects / Rooms / Other** counts (from the project model,
+  instant) and a **Code** count (a background `*.gml` scan that fills in
+  shortly after the section appears).
+- **Open full report** opens the full Check Sprite Usage window for this
+  sprite.
+- Toggle in Preferences under **GM QoL Toolbox → Sprite Editor** ("Show
+  'Sprite Usage' section in Sprite Editor and Inspector") — the same
+  setting also controls the Inspector section below.
+
+![Check sprite usage](images/check-sprite-usage.png)
+
+### <a id="inspector-usage-section-sprites"></a>Inspector — Usage section (sprites)
+
+- The docked Inspector shows a collapsible **Sprite Usage** category
+  when a sprite is selected, mirroring the Object Editor's Usage section
+  above.
+- Object/Room/Other counts show immediately; the Code count fills in
+  shortly after via a background scan.
+- Collapsed by default; **Open full report** jumps to the full Check
+  Sprite Usage window.
+
+![SpriteUsage Inspector](images/sprite-usage-inspector.png)
+![Collision select](images/sprite-usage-editor.png)
+
+### <a id="image-editor-convert-to-frames-auto"></a>Image Editor — `Convert to Frames`: "Auto" checkbox
 
 - In the native strip-import dialog (Image Editor → `Convert to Frames` /
   `Import from Strip`), a new **Auto** checkbox next to "Number of
@@ -253,7 +373,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 ![Convert to Frames](images/convert-frames-before.png)
 ![Convert to Frames after](images/convert-frames-after.png)
 
-**`F11` — collapsing/expanding just the bottom dock**:
+### <a id="f11-bottom-dock"></a>`F11` — collapsing/expanding just the bottom dock
 
 - The native `F12` (`Expand Collapse Docks`) collapses/expands all three
   docks (left, right, bottom) at once. `F11` does the same, but only for
@@ -267,7 +387,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![F11](images/press-f11.png)
 
-**Resource editors — `Find in Resource Tree`**:
+### <a id="find-in-resource-tree"></a>Resource editors — `Find in Resource Tree`
 
 - Right-click on the title bar/tab of any open resource editor → `Find in
   Resource Tree` selects and scrolls to that resource in every open Asset
@@ -279,7 +399,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Find in asset browser](images/find-in-asset-browser.png)
 
-**Workspace — `Rearrange Windows` / `Close All Windows`**:
+### <a id="rearrange-close-windows"></a>Workspace — `Rearrange Windows` / `Close All Windows`
 
 - Right-click on an empty spot on the workspace canvas → next to the
   `Windows` and `Go To...` submenus, two extra top-level entries:
@@ -293,7 +413,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Find in asset browser](images/rearrange-context.png)
 
-**`Shift+F4` — Recent Resources**:
+### <a id="shift-f4-recent-resources"></a>`Shift+F4` — Recent Resources
 
 - A list of recently used resources, most-recently-used first — a
   resource moves to the top both when opened and when its editor is
@@ -312,7 +432,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Recent resources](images/recent-resources.png)
 
-**Room Editor — "Move Assets"**:
+### <a id="room-editor-move-assets"></a>Room Editor — "Move Assets"
 
 - In the room editor's floating toolbar (grid/zoom/show views/playback/
   select-from-any-layer), a new button with a 4-directional arrow icon
@@ -331,7 +451,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Move assets](images/move-assets.png)
 
-**Room Editor — "Room Assets Palette"**:
+### <a id="room-editor-assets-palette"></a>Room Editor — "Room Assets Palette"
 
 - In the room editor's floating toolbar (next to "Move Assets"), a new
   button with a diamond icon (like Sequence in the Asset Tree). Opens a
@@ -354,7 +474,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Recent resources](images/room-palette.png)
 
-**Room Editor — highlighting instances with overrides (`I`)**:
+### <a id="room-editor-highlight-overrides"></a>Room Editor — highlighting instances with overrides (`I`)
 
 - Holding `I` (as in "Inheritance") in the room editor highlights every
   instance with a red rectangle (50% opacity) that has:
@@ -376,10 +496,51 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 
 ![Room inheritance instances](images/room-inheritance-instances.png)
 
+### <a id="room-editor-width-height"></a>Room Editor / Inspector — Width/Height in pixels ("Scale in px")
+
+- For instances and sprite assets in a room: next to the native **Scale
+  X**/**Scale Y** fields, a new **Scale in px** row with **W**/**H**
+  fields — editable pixel width/height, computed from the sprite's size
+  and the current Scale.
+- Available in two places, kept in sync with each other and with Scale
+  X/Y:
+  - the floating properties window (opened by double-clicking an
+    instance/sprite asset in the Room Editor) — a new row right under
+    Scale X/Scale Y,
+  - the docked Inspector's Properties category — one "Scale in px" row
+    with W/H fields, right under the native Scale row.
+- It's really the same underlying value as Scale X/Y, just in different
+  units — editing W/H recomputes and writes Scale X/Y, and editing Scale
+  X/Y refreshes W/H back. Arrow-button step: 1 px.
+- Only added if the separate SpriteUsage plugin isn't already installed —
+  that plugin already provides this, so this one steps aside instead of
+  duplicating it.
+
+![Room item size window](images/room-item-size.png)
+![Room item size inspector](images/room-item-size-inspector.png)
+
+### <a id="font-editor-copy-range"></a>Font Editor — `Copy Range as Text`
+
+- In the Font Editor, below `Regenerate`, a new **Copy Range as Text**
+  button.
+- Builds one continuous string out of every character in every defined
+  range (`lower` to `upper` inclusive, no gaps between ranges and no
+  truncation — unlike the character preview next to each range, which
+  cuts off after a few hundred characters for long ranges) and copies it
+  to the system clipboard.
+- Useful when designing a pixel font in an external tool (e.g. Photoshop)
+  that needs to match the font's actual character set — previously the
+  only way to get that list out was retyping it by hand from the range
+  list, where each range sits on its own line.
+- The button briefly shows "Copied!" after a click.
+
+![Copy Range](images/copy-range-before.png)
+Results in `!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_``abcdefghijklmnopqrstuvwxyz{|}~ÓóĄąĆćĘęŁłŃńŚśŹźŻż▯`
+
 ## Known limitations
 
 - The GML/.yy scan reads files from disk — if you have unsaved changes in
-  an editor, results may differ slightly from what's on screen.
+  an editor, results may differ slightly from what's on screen. Also, it means scanning disk a lot.
 - References built dynamically from strings (e.g.
   `asset_get_index("obj_" + x)`) are not detected.
 

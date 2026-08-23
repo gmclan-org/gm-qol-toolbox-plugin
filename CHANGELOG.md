@@ -4,6 +4,22 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.16.0 — 2026-08-23
+
+- Check Sprite Usage — find where a sprite is used (objects, rooms, code),
+  plus an orphan-sprite finder, and Usage sections in the Sprite Editor and
+  docked Inspector
+- Width/Height in pixels ("Scale in px") for room instances and sprite
+  assets — editable pixel size next to Scale X/Scale Y, in the properties
+  window and the Inspector, kept in sync with it
+- `Copy Range as Text` (Font Editor) — copy every character across every
+  defined range to the clipboard as one string
+- Fixed: `Move Assets` opened a new window every time instead of reusing
+  the one already open for that room, and could stay open after its room
+  tab closed
+- Fixed: `Move Assets` (`M`) and instance-override highlighting (`I`)
+  triggering while typing in a text field elsewhere in the IDE
+
 ## v0.15.0 — 2026-08-23
 
 First public release.
