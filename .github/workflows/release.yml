@@ -4,10 +4,12 @@ name: Release
 # pushed. The Release body is the matching "## vX.Y.Z" section from
 # CHANGELOG.md (a short, human-written "what's new" summary), with
 # GitHub's own auto-generated commit list appended below it for anyone
-# who wants the full detail. The DLL/manifest/install scripts are
-# attached as named assets so they're easy to grab individually - GitHub
-# also always attaches its own auto-generated "Source code (zip/tar.gz)"
-# archive to every release, no extra step needed for that.
+# who wants the full detail. The DLL/manifest/install scripts are zipped
+# into a single "GM-QoL-Toolbox-vX.Y.Z.zip" asset - installing means
+# downloading and extracting one file, not hunting down 4 separate ones.
+# GitHub also always attaches its own auto-generated "Source code
+# (zip/tar.gz)" archive to every release (the whole repo, docs included)
+# regardless - no extra step needed for that.
 #
 # Requires CHANGELOG.md to have a "## vX.Y.Z" entry matching the pushed
 # tag *before* tagging - if missing, the release body falls back to
@@ -35,12 +37,16 @@ jobs:
           ' CHANGELOG.md > RELEASE_NOTES.md
           cat RELEASE_NOTES.md
 
+      - name: Package the plugin into a single zip
+        run: |
+          zip -j "GM-QoL-Toolbox-${GITHUB_REF_NAME}.zip" \
+            GmclanToolboxPlugin.dll \
+            GmclanToolboxPlugin.gmplugin \
+            install.ps1 \
+            uninstall.ps1
+
       - uses: softprops/action-gh-release@v2
         with:
           body_path: RELEASE_NOTES.md
           generate_release_notes: true
-          files: |
-            GmclanToolboxPlugin.dll
-            GmclanToolboxPlugin.gmplugin
-            install.ps1
-            uninstall.ps1
+          files: GM-QoL-Toolbox-${{ github.ref_name }}.zip
