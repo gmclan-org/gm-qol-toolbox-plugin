@@ -30,8 +30,11 @@ jobs:
 
       - name: Extract changelog section for this tag
         run: |
+          # Prefix match, not exact - headers are "## vX.Y.Z — date",
+          # not just "## vX.Y.Z". index()==1 avoids regex metachar
+          # surprises from the dots in a version number.
           awk -v tag="## ${GITHUB_REF_NAME}" '
-            $0 == tag { found=1; next }
+            index($0, tag) == 1 { found=1; next }
             found && /^## / { exit }
             found { print }
           ' CHANGELOG.md > RELEASE_NOTES.md

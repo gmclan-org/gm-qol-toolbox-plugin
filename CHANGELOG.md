@@ -1,8 +1,12 @@
 # Changelog
 
-## v0.15.0
+Versions below without a `v` prefix are internal development builds that
+came before the first public release (`v0.15.0`) — never separately
+published here, listed only so the release history makes sense.
 
-Initial public release.
+## v0.15.0 — 2026-08-23
+
+First public release.
 
 - Check Object Usage — find where an object is used across objects, rooms, parents and code
 - GM QoL Toolbox Options page in `File > Preferences` to toggle every feature individually
@@ -15,3 +19,75 @@ Initial public release.
 - Room Editor: Move Assets, Room Assets Palette, highlighting instances with overrides (`I`)
 
 See the [README](README.md) for the full feature list and details.
+
+## 0.14.0 — 2026-08-23
+
+- Renamed to **GM QoL Toolbox**.
+- New **GM QoL Toolbox Options** page in `File > Preferences` (also from
+  the `Plugins` menu) — a checkbox per feature, plus a setting for how
+  many Recent Resources to remember.
+- `Collision (Select)...` — searchable object picker for Add/Change
+  Event, next to the built-in `Collision` submenu.
+- First-run and update notices pointing to the new Options page.
+
+## 0.0.13 — 2026-08-23
+
+- `F11` — collapse/expand just the bottom dock.
+- Open the collision object — right-click or middle-click a Collision
+  event in the Events window.
+- `Convert to Frames`: Auto checkbox — computes frame count
+  automatically in the Image Editor's strip-import dialog.
+- Highlighting instances with overrides — hold `I` in the Room Editor.
+- `M` — quick-open Move Assets.
+
+## 0.0.11 — 2026-08-21
+
+- Stability fix: plugin windows now close properly when switching
+  projects, preventing a crash.
+
+## 0.0.10 — 2026-08-21
+
+- Room Assets Palette — insert objects, sprites and sequences into a
+  room without the Asset Tree, by drag-and-drop or `ALT`+click.
+
+## 0.0.9 — 2026-08-20
+
+- Move Assets — shift a room layer's contents by an X/Y offset, from the
+  Room Editor toolbar.
+
+## 0.0.8 — 2026-08-20
+
+- Bug fixes and polish for Check Object Usage and the Inspector Usage
+  section.
+
+## 0.0.7 — 2026-08-20
+
+- Usage button (Object Editor) and Usage section (Inspector) for quick,
+  in-place object-usage lookups.
+
+## 0.0.6 — 2026-08-20
+
+- `Shift+F4` — quick list of recently used resources.
+
+## 0.0.5 — 2026-08-20
+
+- `Rearrange Windows` — line up open workspace windows into a column.
+
+## 0.0.4 — 2026-08-20
+
+- `Close All Windows` moved higher up in the workspace right-click menu.
+
+## 0.0.3 — 2026-08-20
+
+- `Find in Resource Tree` — right-click a resource tab to locate it in
+  the Asset Tree.
+
+## 0.0.2 — 2026-08-20
+
+- Green Parent/Variable Definitions section icons in the Object Editor.
+
+## 0.0.1 — 2026-08-20
+
+- Check Object Usage — the first real feature: find where an object is
+  used (parent/child, collision events, room instances, code) with a
+  native object picker.
