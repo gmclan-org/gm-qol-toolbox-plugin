@@ -39,10 +39,12 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 
 ## What does it add?
 
-**Plugins Menu** in top bar
+**General addons** (from `Plugins` menu in top bar)
 
 - **Check Object Usage** *(`Plugins` menu)* — finds where a given object
   is used (objects, rooms, parents, code).
+- **Check Sprite Usage** *(`Plugins` menu)* — finds where a given sprite
+  is used (objects, rooms, code), plus an orphan-sprite finder.
 - **GM QoL Toolbox Options** *(`File > Preferences`, or `Plugins` menu)*
   — a real preferences page to turn every feature below on or off
   individually, plus a couple of settings like how many recent resources
