@@ -1,0 +1,29 @@
+{
+  "name": "GmclanToolboxPlugin",
+  "bundle_version": "0.17.0",
+  "bundle_description": "GM QoL Toolbox (gmclan.org) - adds a Plugins menu with project tooling.",
+  "required": false,
+  "feature_flag": null,
+  "plugins": [
+    {
+      "plugin_name": "GmclanToolboxPlugin",
+      "localised_name": "GM QoL Toolbox",
+      "plugin_version": "0.17.0",
+      "type": "System",
+      "plugin_data": null,
+      "description": "GM QoL Toolbox - adds a Plugins menu with a Check Object Usage command.",
+      "required_assemblies": [
+        {
+          "assembly_name": "GmclanToolboxPlugin",
+          "version": "0.17.0",
+          "path": "GmclanToolboxPlugin.dll",
+          "checksum": "AsZJk6xTcXHjxcT6s4\u002BRY8bsEHmvWAdpE8\u002BxT3P6Oco="
+        }
+      ],
+      "dependencies": []
+    }
+  ],
+  "author": "gmclan.org",
+  "signature": "lvNRP7yfD82uZ6dOwvAqTldeT5X1CPbBSZTVVVYUDVfsbKjkxPW2usYm/4trNDTBXcPxOtdxJMKjNFC\u002BZx0iGtRajFIKRR\u002BXvzIHvSXC4CkDGieIdftKmDPXKdw3nMoUgazZxV7B7tXicIB5R5c1M\u002B/rqfbtE7ttw9e7JJkkZea\u002BCw\u002BbH199atkARbS/ggOMegIyImO9Il/\u002Ba5eoZHIuRHo9tfw3UBVE04C07usP0slRyGtr1YV1mFQXqtHqqFjxrleliazBZekICf5kcdaA4JXxFTxKE1dmD0vMRZ7kC43w4MRIdRVivswFS9lR7pmjKvWGQFH4jg44GyTgSSMCVA==",
+  "verify": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvaiRNssSrhyU9b4CCqjjMJxPwVKVy1p49v1sIqxECo4g3mnFT3m6hYgAhZ6h8f8QEke0DFSouj0B9I6mMVnKfrryjV7e3D2xB8BgJwIAG0oblV4wrlDuGpB94/n00UE1Iyj\u002BdXJUrAYf8mqzblT70N4sUCQQQpxaMtqRZ5kheTIHrt8yfpvx8SDnqvewL7Ewb6j1YL5P7cXfkV0OmBjHS94kN/9mBBZEM2V65ODzXteM28tWzpZoFCqbD8N\u002B4Z4jxxMo1Bkgm1h5ZQDlOTVnfGfNqBRw4uI0oOKMAeYx52hIwSkSIYu9pTXWd/gLg7Y4WLSuuf4dG6fkUVxYCCs7FQIDAQAB"
+}

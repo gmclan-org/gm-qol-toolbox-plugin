@@ -4,6 +4,31 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.17.0 — 2026-08-24
+
+- **New: Advanced Search** (`Plugins` menu) — project-wide text/regex search
+  that can exclude whole resource categories (Objects, Scripts, Sequences,
+  Rooms, Notes, Timelines, Shaders) or a named Asset Browser group (and its
+  subgroups) from the results — e.g. skip a vendored "Extensions"/"GMLive"
+  folder full of generated code. Also searches Extension code, which the
+  native Search & Replace never does. Includes a Regex mode (with a
+  timeout guard against runaway patterns) and a small recent-searches
+  dropdown.
+- Fixed: `Find in Resource Tree` silently did nothing if the Asset Browser
+  had an active search/filter hiding the target, or if its window wasn't
+  the one on top.
+- Fixed: clicking a room-instance row in Check Object/Sprite Usage only
+  opened the room, without switching to the right layer or selecting the
+  instance.
+- Sprite Editor's "Usage" is now a one-click button in the same spot,
+  matching how Object Editor already works, instead of a collapsible
+  section.
+- The Inspector's "Sprite Usage" section is now truly lazy — it no longer
+  computes anything until you actually expand it, matching Object Usage's
+  existing behaviour.
+- New Preferences options to hide just the docked Inspector's "Sprite
+  Usage"/"Object Usage" section, independent of the Editor's own button.
+
 ## v0.16.0 — 2026-08-23
 
 - Check Sprite Usage — find where a sprite is used (objects, rooms, code),

@@ -1,7 +1,8 @@
 # GM QoL Toolbox — plugin for the GameMaker IDE
 
 > [!TIP]
-> If you like this plugin, please consider donating us - money goes into contribution to non-comercial website gmclan.org . [![Buy me a coffee](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-FFDD00?style=for-the-badge)](https://buycoffee.to/gnysek)
+> If you like this plugin, please consider donating us - money goes into contribution to non-comercial website gmclan.org .
+> [![Buy me a coffee](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-FFDD00?style=for-the-badge)](https://buycoffee.to/gnysek)
 
 A quality-of-life plugin for the GameMaker LTS 2026 IDE — developer tools
 for checking object usage in a project, plus a handful of small editor UI
@@ -47,6 +48,11 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   individually, plus a couple of settings like how many recent resources
   to remember. Stored in its own file, never in GameMaker's own
   preferences.
+- **Advanced Search** *(`Plugins` menu)* — a project-wide text/regex search
+  that can exclude whole categories (Objects, Scripts, Sequences, Rooms,
+  Notes, Timelines, Shaders) or a specific Asset Browser group by name
+  (e.g. skip a vendored "Extensions"/"GMLive" folder) — something the
+  native Search & Replace can't do.
 
 **Object Editor**
 
@@ -71,9 +77,12 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   added if the separate SpriteUsage plugin isn't already installed —
   that one already provides this, so this plugin steps aside instead of
   duplicating it.
-- **Usage section** *(Sprite Editor properties panel, and docked
-  Inspector when a sprite is selected)* — object/room/code usage counts
-  at a glance, with a link to the full report.
+- **Usage button** *(Sprite Editor)* — opens the full Check Sprite Usage
+  report for the sprite you're currently editing, without leaving its
+  edit window (matches Object Editor's Usage button).
+- **Usage section** *(docked Inspector, when a sprite is selected)* — a
+  collapsed-by-default summary of the same usage data, for a quick glance
+  without opening the full report window.
 
 **Image Editor**
 
@@ -130,23 +139,30 @@ If new preferences are added in future releases, it will show default GM notific
 
 ## Requirements
 
-- **GameMaker LTS 2026** (that specific release line — the plugin links
-  against internal IDE assemblies; it will not load on Monthly/Beta)
+- **GameMaker LTS 2026** or **GameMaker Beta** (the plugin links against
+  internal IDE assemblies, built separately per release line — pick the
+  matching ZIP below; it will not load on Monthly/Stable or other lines)
 - Windows
 
 ## Download
 
 **[⬇ Download the latest version](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases/latest)**
-— grabs the packaged ZIP from the newest [Release](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases/).
+— grabs the packaged ZIPs from the newest [Release](https://github.com/gmclan-org/gm-qol-toolbox-plugin/releases/).
+Each release has **two ZIPs** — pick the one matching your IDE:
 
-Alternatively, `Code → Download ZIP` on this repo always gives you the
-current build too, if you'd rather not deal with the Releases page.
+- `GM-QoL-Toolbox-vX.Y.Z.zip` — for **GameMaker LTS 2026**
+- `GM-QoL-Toolbox-vX.Y.Z-Beta-2026.x.zip` — for **GameMaker Beta**
+
+Alternatively, `Code → Download ZIP` on this repo gives you the current
+build for both IDE lines at once, under the `lts2026/` and `beta/`
+folders, if you'd rather not deal with the Releases page.
 
 ## Installation
 
 1. Close GameMaker.
-2. Extract the ZIP and open PowerShell in that folder — it should contain
-   `install.ps1`, `uninstall.ps1`, `GmclanToolboxPlugin.dll` and
+2. Extract the ZIP matching your IDE (see [Download](#download)) and open
+   PowerShell in that folder — it should contain `install.ps1`,
+   `uninstall.ps1`, `GmclanToolboxPlugin.dll` and
    `GmclanToolboxPlugin.gmplugin`.
 
    Windows sometimes flags `.ps1` files downloaded from the internet with
@@ -173,8 +189,11 @@ current build too, if you'd rather not deal with the Releases page.
 
 The installer copies `GmclanToolboxPlugin.dll` + `GmclanToolboxPlugin.gmplugin`
 to `C:\ProgramData\GameMakerStudio2-LTS2026\Plugins\GmclanToolboxPlugin\`
-and registers the plugin in `plugins.json` (adds an entry, leaves other
-plugins alone).
+(or `...\GameMakerStudio2-Beta\...` for the Beta ZIP) and registers the
+plugin in that IDE's own `plugins.json` (adds an entry, leaves other
+plugins alone). The two IDE lines have entirely separate `ProgramData`
+folders, so installing into one never affects the other — you can have
+both installed at once.
 
 ## Uninstalling
 
@@ -190,6 +209,7 @@ powershell -ExecutionPolicy Bypass -File .\uninstall.ps1
 Quick jump:
 
   * [GM QoL Toolbox Options](#gm-qol-toolbox-options)
+  * [Plugins → Advanced Search](#advanced-search)
   * [Plugins → Check Object Usage](#check-object-usage)
   * [Object Editor — Usage button](#object-editor-usage-button)
   * [Inspector — Usage section (objects)](#inspector-usage-section)
@@ -197,7 +217,7 @@ Quick jump:
   * [Object Editor — opening the collision object](#object-editor-events-open-collision)
   * [Object Editor — `Collision (Select)...`](#object-editor-collision-select)
   * [Plugins → Check Sprite Usage](#check-sprite-usage)
-  * [Sprite Editor — Usage section](#sprite-editor-usage-section)
+  * [Sprite Editor — Usage button](#sprite-editor-usage-button)
   * [Inspector — Usage section (sprites)](#inspector-usage-section-sprites)
   * [Image Editor — `Convert to Frames` Auto checkbox](#image-editor-convert-to-frames-auto)
   * [`F11` — collapsing/expanding the bottom dock](#f11-bottom-dock)
@@ -233,6 +253,28 @@ Quick jump:
   > **By default, all (new) features are enabled.**
 
 ![GM QoL Toolbox Preferences window](images/preferences.png)
+
+### <a id="advanced-search"></a>`Plugins → Advanced Search`
+
+- A project-wide search built on top of GameMaker's own search engine, with
+  exclusion options the native `Search & Replace` doesn't offer:
+  - **Case sensitive / Whole word / Ignore comments** — same options as
+    the native dialog.
+  - **Regex** — search with a regular expression instead of plain text.
+    A pattern that takes too long to match (catastrophic backtracking) is
+    aborted for that file after a couple of seconds rather than freezing
+    the search.
+  - **Exclude from search** — checkboxes for whole categories: Objects,
+    Scripts, Sequences, Rooms, Notes, Timelines, Shaders.
+  - **Exclude group named** — skip every Asset Browser group with a given
+    name (comma-separated for more than one), anywhere in the tree,
+    including its subgroups — e.g. a vendored "Extensions" or "GMLive"
+    folder full of generated code you never want showing up in results.
+- A small history dropdown (▾) next to the search field remembers your
+  last 10 searches for the current project.
+- Every result opens the exact matching line, same as the native dialog.
+
+![GM QoL Toolbox Advanced Search window](images/advanced-search.png)
 
 ### <a id="check-object-usage"></a>`Plugins → Check Object Usage`
 
@@ -329,34 +371,28 @@ Quick jump:
   isn't already installed — that plugin already provides this exact
   feature, so this one steps aside instead of duplicating it.
 
-### <a id="sprite-editor-usage-section"></a>Sprite Editor — Usage section
+### <a id="sprite-editor-usage-button"></a>Sprite Editor — Usage button
 
-- At the bottom of the Sprite Editor's properties panel (below Nine
-  Slice/Texture Settings), a collapsible **Usage** section, matching the
-  built-in sections around it.
-- Shows **Objects / Rooms / Other** counts (from the project model,
-  instant) and a **Code** count (a background `*.gml` scan that fills in
-  shortly after the section appears).
-- **Open full report** opens the full Check Sprite Usage window for this
-  sprite.
-- Toggle in Preferences under **GM QoL Toolbox → Sprite Editor** ("Show
-  'Sprite Usage' section in Sprite Editor and Inspector") — the same
-  setting also controls the Inspector section below.
+- In the Sprite Editor's properties panel (below Nine Slice/Texture
+  Settings), a **Usage** button opens the full Check Sprite Usage report
+  for the sprite being edited (matches Object Editor's Usage button).
 
 ![Check sprite usage](images/check-sprite-usage.png)
 
 ### <a id="inspector-usage-section-sprites"></a>Inspector — Usage section (sprites)
 
-- The docked Inspector shows a collapsible **Sprite Usage** category
-  when a sprite is selected, mirroring the Object Editor's Usage section
-  above.
-- Object/Room/Other counts show immediately; the Code count fills in
-  shortly after via a background scan.
-- Collapsed by default; **Open full report** jumps to the full Check
-  Sprite Usage window.
+- The docked Inspector shows a collapsible **Sprite Usage** category when
+  a sprite is selected, mirroring the Object Editor's Usage section.
+- Collapsed by default and computes nothing until expanded — only then
+  does it show "Searching..." and the real data: Objects/Rooms/Other
+  counts, a Code count (background `*.gml` scan), and a link to the full
+  report.
+- Toggle in Preferences under **GM QoL Toolbox → Sprite Editor**: "Show
+  'Sprite Usage' button in Sprite Editor and Inspector" controls both this
+  and the Editor button above; "Disable 'Sprite Usage' section in
+  Inspector" hides just this one, independent of the Editor button.
 
 ![SpriteUsage Inspector](images/sprite-usage-inspector.png)
-![Collision select](images/sprite-usage-editor.png)
 
 ### <a id="image-editor-convert-to-frames-auto"></a>Image Editor — `Convert to Frames`: "Auto" checkbox
 

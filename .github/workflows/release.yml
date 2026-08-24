@@ -4,12 +4,13 @@ name: Release
 # pushed. The Release body is the matching "## vX.Y.Z" section from
 # CHANGELOG.md (a short, human-written "what's new" summary), with
 # GitHub's own auto-generated commit list appended below it for anyone
-# who wants the full detail. The DLL/manifest/install scripts are zipped
-# into a single "GM-QoL-Toolbox-vX.Y.Z.zip" asset - installing means
-# downloading and extracting one file, not hunting down 4 separate ones.
-# GitHub also always attaches its own auto-generated "Source code
-# (zip/tar.gz)" archive to every release (the whole repo, docs included)
-# regardless - no extra step needed for that.
+# who wants the full detail. The DLL/manifest/install scripts for each
+# supported IDE line live in their own folder (lts2026/, beta/) and are
+# zipped separately - installing means downloading and extracting one
+# file for your IDE, not hunting down 4 separate ones or grabbing the
+# wrong IDE's build. GitHub also always attaches its own auto-generated
+# "Source code (zip/tar.gz)" archive to every release (the whole repo,
+# docs included) regardless - no extra step needed for that.
 #
 # Requires CHANGELOG.md to have a "## vX.Y.Z" entry matching the pushed
 # tag *before* tagging - if missing, the release body falls back to
@@ -40,16 +41,23 @@ jobs:
           ' CHANGELOG.md > RELEASE_NOTES.md
           cat RELEASE_NOTES.md
 
-      - name: Package the plugin into a single zip
+      - name: Package the plugin into per-IDE zips
         run: |
           zip -j "GM-QoL-Toolbox-${GITHUB_REF_NAME}.zip" \
-            GmclanToolboxPlugin.dll \
-            GmclanToolboxPlugin.gmplugin \
-            install.ps1 \
-            uninstall.ps1
+            lts2026/GmclanToolboxPlugin.dll \
+            lts2026/GmclanToolboxPlugin.gmplugin \
+            lts2026/install.ps1 \
+            lts2026/uninstall.ps1
+          zip -j "GM-QoL-Toolbox-${GITHUB_REF_NAME}-Beta-2026.x.zip" \
+            beta/GmclanToolboxPlugin.dll \
+            beta/GmclanToolboxPlugin.gmplugin \
+            beta/install.ps1 \
+            beta/uninstall.ps1
 
       - uses: softprops/action-gh-release@v2
         with:
           body_path: RELEASE_NOTES.md
           generate_release_notes: true
-          files: GM-QoL-Toolbox-${{ github.ref_name }}.zip
+          files: |
+            GM-QoL-Toolbox-${{ github.ref_name }}.zip
+            GM-QoL-Toolbox-${{ github.ref_name }}-Beta-2026.x.zip
