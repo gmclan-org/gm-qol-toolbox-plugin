@@ -2,7 +2,9 @@
 
 > [!TIP]
 > If you like this plugin, please consider donating us - money goes into contribution to non-comercial website gmclan.org .
-> [![Buy me a coffee](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-FFDD00?style=for-the-badge)](https://buycoffee.to/gnysek)
+>
+> [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/gnysek)
+> [![Buy me a coffee](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee%20-%20buycoffe.to-FFDD00?style=for-the-badge)](https://buycoffee.to/gnysek)
 
 A quality-of-life plugin for the GameMaker LTS 2026 IDE — developer tools
 for checking object usage in a project, plus a handful of small editor UI
