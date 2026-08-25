@@ -4,6 +4,14 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.18.7 — 2026-08-25
+
+- Fixed: the top toolbar's Search/Advanced Search buttons could get lost or
+  moved into the wrong toolbar when switching between a Room tab and a
+  Workspace tab, or duplicated when reopening a Room tab repeatedly.
+- New: a preferences option to hide the top toolbar Search/Advanced Search
+  buttons.
+
 ## v0.18.6 — 2026-08-25
 
 - Fixed: the installer no longer fails on a fresh GameMaker LTS 2026
