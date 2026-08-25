@@ -4,6 +4,10 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.19.2 — 2026-08-26
+
+- Second GMPM release.
+
 ## v0.19.1 — 2026-08-25
 
 - GMPM compatibility attempt (no functional changes).
