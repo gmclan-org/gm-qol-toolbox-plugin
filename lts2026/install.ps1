@@ -5,7 +5,8 @@ $ErrorActionPreference = "Stop"
 
 $pluginName   = "GmclanToolboxPlugin"
 $author       = "gmclan.org"
-$pluginsRoot  = "C:\ProgramData\GameMakerStudio2-LTS2026\Plugins"
+$gmDataRoot   = "C:\ProgramData\GameMakerStudio2-LTS2026"
+$pluginsRoot  = Join-Path $gmDataRoot "Plugins"
 $targetDir    = Join-Path $pluginsRoot $pluginName
 $manifestPath = Join-Path $pluginsRoot "plugins.json"
 $sourceDir    = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -13,10 +14,17 @@ $sourceDir    = Split-Path -Parent $MyInvocation.MyCommand.Path
 Write-Host "=== $pluginName installer ===" -ForegroundColor Cyan
 
 # 1. Is GameMaker LTS 2026 installed?
-if (-not (Test-Path $pluginsRoot)) {
-    Write-Host "ERROR: $pluginsRoot not found" -ForegroundColor Red
+if (-not (Test-Path $gmDataRoot)) {
+    Write-Host "ERROR: $gmDataRoot not found" -ForegroundColor Red
     Write-Host "This plugin requires GameMaker LTS 2026. Install the IDE and try again."
     exit 1
+}
+
+# The Plugins folder only exists once the IDE has loaded at least one
+# plugin/GMPM package - a fresh install may not have it yet.
+if (-not (Test-Path $pluginsRoot)) {
+    New-Item -ItemType Directory -Force $pluginsRoot | Out-Null
+    Write-Host "Created $pluginsRoot" -ForegroundColor Yellow
 }
 
 # 2. GameMaker must not be running

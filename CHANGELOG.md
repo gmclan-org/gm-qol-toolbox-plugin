@@ -4,6 +4,12 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.18.6 — 2026-08-25
+
+- Fixed: the installer no longer fails on a fresh GameMaker LTS 2026
+  install that has never loaded a plugin or GMPM package before — it now
+  creates the `Plugins` folder if it's missing instead of erroring out.
+
 ## v0.18.5 — 2026-08-25
 
 - Fixed: the F11 "show/hide bottom dock" hotkey no longer collides with the
