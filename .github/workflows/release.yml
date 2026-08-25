@@ -43,7 +43,7 @@ jobs:
 
       - name: Package the plugin into per-IDE zips
         run: |
-          zip -j "GM-QoL-Toolbox-${GITHUB_REF_NAME}.zip" \
+          zip -j "GM-QoL-Toolbox-${GITHUB_REF_NAME}-LTS-2026.zip" \
             lts2026/GmclanToolboxPlugin.dll \
             lts2026/GmclanToolboxPlugin.gmplugin \
             lts2026/install.ps1 \
@@ -54,6 +54,33 @@ jobs:
             beta/install.ps1 \
             beta/uninstall.ps1
 
+      - name: Package the GMPM (GameMaker Project Manager) tarball
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p gmpm/package
+          cp lts2026/GmclanToolboxPlugin.dll gmpm/package/
+          cp lts2026/GmclanToolboxPlugin.gmplugin gmpm/package/
+          cat > gmpm/package/package.json <<EOF
+          {
+            "name": "@gmclan-org/gm-qol-toolbox-plugin",
+            "version": "${VERSION}",
+            "description": "GM Toolbox",
+            "keywords": [],
+            "author": "gmclan.org",
+            "license": "",
+            "gm": {
+              "destination": "gmclan-org/gm-qol-toolbox-plugin",
+              "displayName": "GM Toolbox",
+              "shortDescription": "GM Toolbox - QoL plugin for the GM IDE"
+            },
+            "files": [
+              "GmclanToolboxPlugin.dll",
+              "GmclanToolboxPlugin.gmplugin"
+            ]
+          }
+          EOF
+          tar -czf "gmpm/gm-qol-toolbox-plugin-${VERSION}.tgz" -C gmpm package
+
       - uses: softprops/action-gh-release@v2
         with:
           body_path: RELEASE_NOTES.md
@@ -61,3 +88,4 @@ jobs:
           files: |
             GM-QoL-Toolbox-${{ github.ref_name }}.zip
             GM-QoL-Toolbox-${{ github.ref_name }}-Beta-2026.x.zip
+            gmpm/gm-qol-toolbox-plugin-*.tgz
