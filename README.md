@@ -1,4 +1,6 @@
-# GM QoL Toolbox — plugin for the GameMaker IDE
+![GM Quality of life Toolbox](images/gm-toolbox-logo.png)
+
+# GM Toolbox — QoL plugin for the GameMaker IDE
 
 > [!TIP]
 > If you like this plugin, please consider donating us - money goes into contribution to non-comercial website gmclan.org .
