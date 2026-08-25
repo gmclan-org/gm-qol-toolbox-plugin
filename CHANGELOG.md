@@ -4,6 +4,17 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.18.5 — 2026-08-25
+
+- Fixed: the F11 "show/hide bottom dock" hotkey no longer collides with the
+  debugger's own "Step Into" hotkey while the Debugger tab is focused.
+- Fixed (GameMaker Beta): the canvas right-click menu's "Rearrange Windows"
+  and "Close All Windows" entries, and the F11 fix above, now also work
+  with Beta's new split/tiling workspace layout.
+- Fixed (GameMaker Beta/Code Editor 2): Recent Resources (Shift+F4) and
+  Find in Resource Tree now also detect scripts/code opened in the Code
+  Editor 2 experimental editor.
+
 ## v0.18.0 — 2026-08-25
 
 - New: quick-access toolbar buttons for Search and Replace and Advanced
