@@ -80,6 +80,10 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   event)* — opens the editor for the object it collides with.
 - **`Collision (Select)...`** *(Object Editor → Add/Change Event)* — the
   same searchable object picker as when searching for parent/child objects, and similar to when selecting sprites for object.
+- **Force minimal width for Events window** *(Preferences, off by
+  default)* — the Events window normally can't be resized wider until
+  the Variable Definitions window is also open; when enabled, sets its
+  width to a configurable value (in DPI pixels) as soon as it opens.
 
 **Sprite Editor**
 
