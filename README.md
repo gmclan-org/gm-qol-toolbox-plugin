@@ -31,8 +31,8 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   * [What does it add?](#what-does-it-add)
   * [Requirements](#requirements)
   * [Download](#download)
-  * [Installation](#installation)
-  * [Uninstalling](#uninstalling)
+  * [**Installation**](#installation)
+  * [**Uninstalling**](#uninstalling)
   * [Features in detail](#features-in-detail)
   * [Known limitations](#known-limitations)
   * [Bug Reports](#bug-reports)
@@ -40,6 +40,8 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   * [License](#license)
 
 ## What does it add?
+
+*(see [Features in detail](#features-in-detail) below for screenshots and full descriptions)*
 
 **General addons** (from `Plugins` menu in top bar)
 
@@ -52,11 +54,14 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   individually, plus a couple of settings like how many recent resources
   to remember. Stored in its own file, never in GameMaker's own
   preferences.
-- **Advanced Search** *(`Plugins` menu)* — a project-wide text/regex search
+- **Advanced Search** *(`Plugins` menu)* — a project-wide text/*regex** search
   that can exclude whole categories (Objects, Scripts, Sequences, Rooms,
   Notes, Timelines, Shaders) or a specific Asset Browser group by name
   (e.g. skip a vendored "Extensions"/"GMLive" folder) — something the
   native Search & Replace can't do.
+- **Toolbar buttons** *(IDE main toolbar)* — quick-access buttons for
+  `Search and Replace` and `Advanced Search`, next to the native
+  collapse/expand-docks button.
 
 **Object Editor**
 
@@ -214,6 +219,7 @@ Quick jump:
 
   * [GM QoL Toolbox Options](#gm-qol-toolbox-options)
   * [Plugins → Advanced Search](#advanced-search)
+  * [IDE main toolbar — quick-access buttons](#toolbar-buttons)
   * [Plugins → Check Object Usage](#check-object-usage)
   * [Object Editor — Usage button](#object-editor-usage-button)
   * [Inspector — Usage section (objects)](#inspector-usage-section)
@@ -277,8 +283,22 @@ Quick jump:
 - A small history dropdown (▾) next to the search field remembers your
   last 10 searches for the current project.
 - Every result opens the exact matching line, same as the native dialog.
+- Support for tags will be added in the future.
 
 ![GM QoL Toolbox Advanced Search window](images/advanced-search.png)
+
+### <a id="toolbar-buttons"></a>IDE main toolbar — quick-access buttons
+
+- Two new buttons in the IDE's main toolbar, next to the native
+  collapse/expand-docks button:
+  - **Search and Replace** — opens the native `Search & Replace` window,
+    same as `Ctrl+Shift+F`.
+  - **Advanced Search** — opens this plugin's own [Advanced
+    Search](#advanced-search) window.
+- Both just save a trip to the menus for searches you run often; neither
+  adds behavior beyond what its menu entry already does.
+
+![GM QoL Toolbox toolbar buttons](images/topbar-buttons.png)
 
 ### <a id="check-object-usage"></a>`Plugins → Check Object Usage`
 
@@ -469,6 +489,8 @@ Quick jump:
   (`PopupWindow`).
 - Unlike the native `Recent Windows`, it never mixes in events — it's a
   plain list of resources.
+- Rows for a resource still open elsewhere are tinted green; the rest stay
+  white/default, so you can tell at a glance which ones are already open.
 
 ![Recent resources](images/recent-resources.png)
 
@@ -509,6 +531,7 @@ Quick jump:
     Asset Tree, as long as the palette was used most recently; clicking
     anything directly in the real Asset Tree (even the same resource
     again) immediately hands priority back to it.
+- It have search window. In future versions it would also support tags.
 - The window closes automatically together with the project and on IDE
   exit.
 

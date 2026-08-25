@@ -4,6 +4,29 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.18.0 — 2026-08-25
+
+- New: quick-access toolbar buttons for Search and Replace and Advanced
+  Search on the IDE's main toolbar.
+- Advanced Search: the search box is now a real dropdown with recent
+  searches, and the resource-type filters were simplified into a single
+  "Include" dropdown (all types included by default) instead of a grid of
+  exclude checkboxes.
+- Fixed: opening the full Object/Sprite Usage report from the Inspector or
+  Editor no longer immediately re-runs the check — it just pre-selects the
+  resource so you can press Check yourself.
+- Recent Resources (Shift+F4): clicking anywhere in a row now opens it (not
+  just the name text), and resources still open elsewhere are shown with a
+  green tint.
+- Fixed: the shared results panel no longer pops open by itself when
+  opening a search/usage window — only when there are actual results to
+  show.
+- Preferences: the two donation links are now listed separately.
+- Fixed: the "Search and Replace" and "Advanced Search" toolbar buttons no
+  longer disappear after closing a room or workspace tab.
+- Fixed: the installer scripts no longer fail on GameMaker's `plugins.json`
+  when it was written with trailing commas.
+
 ## v0.17.0 — 2026-08-24
 
 - **New: Advanced Search** (`Plugins` menu) — project-wide text/regex search

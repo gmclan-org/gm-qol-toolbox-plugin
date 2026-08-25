@@ -57,7 +57,11 @@ $entry = [ordered]@{
 }
 
 if (Test-Path $manifestPath) {
-    $json = Get-Content $manifestPath -Raw | ConvertFrom-Json
+    # GMPM (GameMaker's package manager) writes plugins.json with trailing
+    # commas (same JSON5-ish style as .yy/.yyp), which ConvertFrom-Json
+    # rejects outright - strip them before parsing.
+    $manifestRaw = (Get-Content $manifestPath -Raw) -replace ',(\s*[}\]])', '$1'
+    $json = $manifestRaw | ConvertFrom-Json
     $existing = @($json.Plugins) | Where-Object { $_.Name -eq $pluginName -and $_.Author -eq $author }
     if ($existing) {
         if ($existing.Version -ne $version) {
