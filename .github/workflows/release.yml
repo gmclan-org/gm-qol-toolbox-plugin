@@ -71,7 +71,8 @@ jobs:
             "gm": {
               "destination": "gmclan-org/gm-qol-toolbox-plugin",
               "displayName": "GM Toolbox",
-              "shortDescription": "GM Toolbox - QoL plugin for the GM IDE"
+              "shortDescription": "GM Toolbox - QoL plugin for the GM IDE",
+              "notifyOfUpdates": true
             },
             "files": [
               "GmclanToolboxPlugin.dll",
