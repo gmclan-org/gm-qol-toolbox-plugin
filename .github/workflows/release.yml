@@ -4,11 +4,9 @@ name: Release
 # pushed. The Release body is the matching "## vX.Y.Z" section from
 # CHANGELOG.md (a short, human-written "what's new" summary), with
 # GitHub's own auto-generated commit list appended below it for anyone
-# who wants the full detail. The DLL/manifest/install scripts for each
-# supported IDE line live in their own folder (lts2026/, beta/) and are
-# zipped separately - installing means downloading and extracting one
-# file for your IDE, not hunting down 4 separate ones or grabbing the
-# wrong IDE's build. GitHub also always attaches its own auto-generated
+# who wants the full detail. Distribution is via GMPM (the GameMaker
+# Project Manager) as a .tgz package - no manual install/uninstall
+# scripts or zips. GitHub also always attaches its own auto-generated
 # "Source code (zip/tar.gz)" archive to every release (the whole repo,
 # docs included) regardless - no extra step needed for that.
 #
@@ -41,25 +39,12 @@ jobs:
           ' CHANGELOG.md > RELEASE_NOTES.md
           cat RELEASE_NOTES.md
 
-      - name: Package the plugin into per-IDE zips
-        run: |
-          zip -j "GM-QoL-Toolbox-${GITHUB_REF_NAME}-LTS-2026.zip" \
-            lts2026/GmclanToolboxPlugin.dll \
-            lts2026/GmclanToolboxPlugin.gmplugin \
-            lts2026/install.ps1 \
-            lts2026/uninstall.ps1
-          zip -j "GM-QoL-Toolbox-${GITHUB_REF_NAME}-Beta-2026.x.zip" \
-            beta/GmclanToolboxPlugin.dll \
-            beta/GmclanToolboxPlugin.gmplugin \
-            beta/install.ps1 \
-            beta/uninstall.ps1
-
       - name: Package the GMPM (GameMaker Project Manager) tarball
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           mkdir -p gmpm/package
-          cp lts2026/GmclanToolboxPlugin.dll gmpm/package/
-          cp lts2026/GmclanToolboxPlugin.gmplugin gmpm/package/
+          cp GmclanToolboxPlugin.dll gmpm/package/
+          cp GmclanToolboxPlugin.gmplugin gmpm/package/
           cat > gmpm/package/package.json <<EOF
           {
             "name": "@gmclan-org/gm-qol-toolbox-plugin",
@@ -87,6 +72,4 @@ jobs:
           body_path: RELEASE_NOTES.md
           generate_release_notes: true
           files: |
-            GM-QoL-Toolbox-${{ github.ref_name }}-LTS-2026.zip
-            GM-QoL-Toolbox-${{ github.ref_name }}-Beta-2026.x.zip
             gmpm/gm-qol-toolbox-plugin-*.tgz
