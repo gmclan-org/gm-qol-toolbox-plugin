@@ -3,6 +3,7 @@ name: Notify GMPM registry
 on:
   release:
     types: [published]
+  workflow_dispatch: {}
 
 jobs:
   notify:
