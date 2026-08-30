@@ -8,16 +8,13 @@ Quick jump:
 
   * [GM QoL Toolbox Options](#gm-qol-toolbox-options)
   * [Plugins → Advanced Search](#advanced-search)
+  * [Plugins → Search Variable Overrides](#search-variable-overrides)
   * [IDE main toolbar — quick-access buttons](#toolbar-buttons)
-  * [Plugins → Check Object Usage](#check-object-usage)
-  * [Object Editor — Usage button](#object-editor-usage-button)
-  * [Inspector — Usage section (objects)](#inspector-usage-section)
+  * [Plugins → Check Asset Usage](#check-asset-usage)
   * [Object Editor — green section icons](#object-editor-green-icons)
   * [Object Editor — opening the collision object](#object-editor-events-open-collision)
   * [Object Editor — `Collision (Select)...`](#object-editor-collision-select)
-  * [Plugins → Check Sprite Usage](#check-sprite-usage)
-  * [Sprite Editor — Usage button](#sprite-editor-usage-button)
-  * [Inspector — Usage section (sprites)](#inspector-usage-section-sprites)
+  * [Object Editor — force minimal width for Events window](#object-editor-events-min-width)
   * [Image Editor — `Convert to Frames` Auto checkbox](#image-editor-convert-to-frames-auto)
   * [`F11` — collapsing/expanding the bottom dock](#f11-bottom-dock)
   * [Resource editors — `Find in Resource Tree`](#find-in-resource-tree)
@@ -69,64 +66,96 @@ Quick jump:
     name (comma-separated for more than one), anywhere in the tree,
     including its subgroups — e.g. a vendored "Extensions" or "GMLive"
     folder full of generated code you never want showing up in results.
+  - **Tags:** — a multi-select dropdown that restricts results to
+    resources carrying any of the checked project tags (OR across
+    selected tags), ANDed with the other filters above.
 - A small history dropdown (▾) next to the search field remembers your
   last 10 searches for the current project.
 - Every result opens the exact matching line, same as the native dialog.
-- Support for tags will be added in the future.
 
 ![GM QoL Toolbox Advanced Search window](images/advanced-search.png)
 
+### <a id="search-variable-overrides"></a>`Plugins → Search Variable Overrides`
+
+- Pick an object (the same searchable picker used elsewhere in this
+  plugin), then check which of its **Variable Definitions** to search
+  for — own definitions and ones inherited from a parent object are both
+  listed, with **Select all**/**Select none** to speed that up.
+- **Search also for all children** extends the search to every
+  child/subclass object of the picked one too.
+- Running the search lists every room instance whose per-instance
+  properties override one of the checked variables, grouped the same way
+  as [Check Asset Usage](#check-asset-usage)'s room results — by room,
+  then layer. Each result opens the matching room and selects the
+  instance.
+- Also reachable directly from the Object Editor (a button next to
+  Variable Definitions) and from the docked Inspector, pre-filled for the
+  object being edited.
+
+![Search Variable Overrides window](images/search-vd-main.png)
+![Search Variable Overrides window](images/search-vd-vd.png)
+
 ### <a id="toolbar-buttons"></a>IDE main toolbar — quick-access buttons
 
-- Two new buttons in the IDE's main toolbar, next to the native
-  collapse/expand-docks button:
+- Three new buttons next to the native collapse/expand-docks button:
   - **Search and Replace** — opens the native `Search & Replace` window,
     same as `Ctrl+Shift+F`.
   - **Advanced Search** — opens this plugin's own [Advanced
     Search](#advanced-search) window.
-- Both just save a trip to the menus for searches you run often; neither
-  adds behavior beyond what its menu entry already does.
+  - **Check Asset Usage** — opens this plugin's own [Check Asset
+    Usage](#check-asset-usage) window.
+  - All three just save a trip to the menus for actions you run often;
+    none adds behavior beyond what its menu entry already does.
+  - Shown/hidden together via a single Preferences toggle; shown by
+    default.
+- A **Re-run** button, right after `Run` and before `Stop` — does the same
+  thing as `Build > Re-run` (re-runs the last build without a full
+  rebuild). Greyed out whenever re-running isn't currently available (e.g.
+  nothing has been run yet). Has its own separate Preferences toggle;
+  shown by default.
 
 ![GM QoL Toolbox toolbar buttons](images/topbar-buttons.png)
 
-### <a id="check-object-usage"></a>`Plugins → Check Object Usage`
+### <a id="check-asset-usage"></a>`Plugins → Check Asset Usage`
 
-- **Select object...** — the native object picker (the same one used in
-  the Object Editor's "Parent" field). Selecting one runs the scan
-  immediately.
-- Results in four sections:
-  - **PARENT OBJECT / CHILD OBJECTS** — the object's inheritance, straight
-    from the project model (no scanning involved).
-  - **COLLISION EVENTS** — collision events referencing the object, from
-    the project model.
-  - **ROOM INSTANCES** — every instance of the object in every room,
-    grouped by room + layer.
-  - **GML CODE / OTHER .yy FILES** — a search of the project's files for
-    the object's name (a fallback for references the model doesn't track
-    directly).
+- A unified usage-checker window covering **Object**, **Sprite**, and
+  **Room** — replaces the older separate "Check Object Usage" and "Check
+  Sprite Usage" tools.
+- Pick an asset type, then **Select...** (the native picker for that
+  type). Selecting one runs the scan immediately; **Check usage** re-runs
+  it for the current selection.
+- **Find orphans** scans every asset of the selected type in the project
+  and lists the ones with no usage at all. Only available for Object/
+  Sprite — "orphan" isn't a meaningful concept for Room.
+- What counts as "usage" depends on the type:
+  - **Object** — PARENT OBJECT / CHILD OBJECTS (project model), COLLISION
+    EVENTS referencing the object, ROOM INSTANCES grouped by room + layer.
+  - **Sprite** — every typed reference from the project model (objects
+    using it as sprite or collision mask, rooms, tile sets, particle
+    systems, ...), grouped by resource type.
+  - **Room** — every Object's Variable Definitions list is also checked
+    for Asset-type variables pointing at that room, in addition to direct
+    references.
+  - All three also fall back to a **GML CODE** / **OTHER .yy FILES** scan
+    of the project's files for the asset's name, for references the
+    project model doesn't track directly.
+- **Search in GML code** / **Search in other .yy files** checkboxes let
+  you skip either scan; a skipped scope shows as excluded rather than "0
+  results". **Ignore comments** (GML scan only, on by default) filters out
+  matches that fall inside comments. **Search also for all children**
+  (Object only) extends the check to every descendant object too.
 - Every result row opens the corresponding resource; code hits jump
   straight to the matching line.
+- The type/scope checkbox selections are remembered for the rest of the
+  IDE session (not saved to disk).
+- A **Usage** button opens this same report pre-selected for the asset
+  being edited — in the compact Object edit window (Asset Browser → Edit,
+  under Variable Definitions) and in the Sprite Editor's properties panel
+  (below Nine Slice/Texture Settings).
 
-![Check Object Usage window](images/check-object-usage.png)
-
-### <a id="object-editor-usage-button"></a>Object Editor — Usage button
-
-- In the compact object edit window (Asset Browser → Edit), a new
-  **Usage** button under Variable Definitions opens the full "Check
-  Object Usage" report for the object being edited.
-
-![Object Usage button](images/object-usage-object.png)
-
-### <a id="inspector-usage-section"></a>Inspector — Usage section (objects)
-
-- The docked Inspector (the properties panel shown when an object is
-  selected in the Asset Browser) shows a collapsible **Usage** category,
-  mirroring the SpriteUsage plugin's Usage section for sprites.
-- Collapsed by default and computes nothing until expanded — only then
-  does it show "Searching..." and the real data: parent/child/collision/
-  room counts, code references, and a link to the full report.
-
-![Object Inspector Usage section](images/object-usage-inspector.png)
+![Check Asset Usage window](images/check-asset-usage.png)
+![Object Usage button](images/asset-usage-object.png)
+![Object Usage button](images/asset-usage-sprite.png)
 
 ### <a id="object-editor-green-icons"></a>Object Editor — green section icons
 
@@ -155,7 +184,7 @@ Quick jump:
 - Next to the built-in `Collision` submenu (which lists every object
   alphabetically, ignoring your Asset Tree folder order, and needs
   clicking through nested folders), a new `Collision (Select)...` entry
-  opens the same searchable object picker "Check Object Usage" uses.
+  opens the same searchable object picker "Check Asset Usage" uses.
 - Works identically to the built-in `Collision` for both adding a new
   Collision event (Add Event) and retargeting an existing one (Change
   Event) — same Undo grouping, same GML/Visual prompt.
@@ -163,49 +192,14 @@ Quick jump:
 ![Collision select](images/collision-select.png)
 ![Collision select popup](images/collision-select-popup.png)
 
-### <a id="check-sprite-usage"></a>`Plugins → Check Sprite Usage`
+### <a id="object-editor-events-min-width"></a>Object Editor — force minimal width for Events window
 
-- **Select sprite...** — the native sprite picker. Selecting one runs the
-  scan immediately.
-- **Check usage** — re-runs the scan for the currently selected sprite.
-- **Find orphans** — scans every sprite in the project and lists the ones
-  with no usage at all (no project reference, no GML/.yy hit).
-- Results in three sections:
-  - **PROJECT RESOURCES** — every typed reference to the sprite from the
-    project model (objects using it as sprite or collision mask, rooms,
-    tile sets, particle systems, ...), grouped by resource type.
-  - **GML CODE** — a search of the project's `*.gml` files for the
-    sprite's name.
-  - **OTHER .yy FILES** — other resource files mentioning the sprite's
-    name, skipping anything already listed under PROJECT RESOURCES.
-- Every result row opens the corresponding resource; code hits jump
-  straight to the matching line.
-- Only added to the `Plugins` menu if the separate SpriteUsage plugin
-  isn't already installed — that plugin already provides this exact
-  feature, so this one steps aside instead of duplicating it.
-
-### <a id="sprite-editor-usage-button"></a>Sprite Editor — Usage button
-
-- In the Sprite Editor's properties panel (below Nine Slice/Texture
-  Settings), a **Usage** button opens the full Check Sprite Usage report
-  for the sprite being edited (matches Object Editor's Usage button).
-
-![Check sprite usage](images/check-sprite-usage.png)
-
-### <a id="inspector-usage-section-sprites"></a>Inspector — Usage section (sprites)
-
-- The docked Inspector shows a collapsible **Sprite Usage** category when
-  a sprite is selected, mirroring the Object Editor's Usage section.
-- Collapsed by default and computes nothing until expanded — only then
-  does it show "Searching..." and the real data: Objects/Rooms/Other
-  counts, a Code count (background `*.gml` scan), and a link to the full
-  report.
-- Toggle in Preferences under **GM QoL Toolbox → Sprite Editor**: "Show
-  'Sprite Usage' button in Sprite Editor and Inspector" controls both this
-  and the Editor button above; "Disable 'Sprite Usage' section in
-  Inspector" hides just this one, independent of the Editor button.
-
-![SpriteUsage Inspector](images/sprite-usage-inspector.png)
+- Preferences option (Object Editor group, **off by default**): the native
+  Events window normally can't be resized wider than a fairly narrow
+  default until the Variable Definitions window is also open next to it.
+- When enabled, sets the Events window to a configurable width (in DPI
+  pixels) as soon as it opens, without needing Variable Definitions open
+  first.
 
 ### <a id="image-editor-convert-to-frames-auto"></a>Image Editor — `Convert to Frames`: "Auto" checkbox
 
@@ -266,9 +260,14 @@ Quick jump:
 
 - A list of recently used resources, most-recently-used first — a
   resource moves to the top both when opened and when its editor is
-  closed. Limited to 30 entries, cleared when the project closes. Windows
-  already open when the plugin starts (GameMaker restores them from the
-  previous session) are also added, in roughly top-to-bottom order.
+  closed. Limited to 5–40 entries (configurable in Preferences, default
+  30), cleared when the project closes. Windows already open when the
+  plugin starts (GameMaker restores them from the previous session) are
+  also added, in roughly top-to-bottom order.
+- Also seeded from GameMaker's own native "Recent" list in the Asset
+  Browser on project load, so resources closed in a previous session can
+  show up here too, not just ones opened/closed in the current one.
+- A search field at the top filters the list as you type.
 - Clicking a row opens the resource and closes the window; up/down arrows
   move the selection and wrap around, `Enter` opens the selected row,
   `Escape` closes without selecting. The window can also be dragged
@@ -320,7 +319,10 @@ Quick jump:
     Asset Tree, as long as the palette was used most recently; clicking
     anything directly in the real Asset Tree (even the same resource
     again) immediately hands priority back to it.
-- It have search window. In future versions it would also support tags.
+- A search field filters by name; a **Tags:** dropdown next to it filters
+  by project tags (multi-select, checkbox items — matching a resource with
+  ANY of the checked tags, same OR semantics as the native Asset Browser's
+  Sort/Filter > Tags). Name and tag filters are AND-ed together.
 - The window closes automatically together with the project and on IDE
   exit.
 

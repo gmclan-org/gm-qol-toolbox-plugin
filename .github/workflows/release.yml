@@ -73,3 +73,14 @@ jobs:
           generate_release_notes: true
           files: |
             gmpm/gm-qol-toolbox-plugin-*.tgz
+
+      - name: Notify GMPM registry
+        run: |
+          BODY='{"gh_user":"${{ github.repository_owner }}","gh_repo":"${{ github.event.repository.name }}"}'
+          SIG="sha256=$(printf '%s' "$BODY" | openssl dgst -sha256 -hmac "${{ secrets.WEBHOOK_SECRET }}" | sed 's/^.* //')"
+          curl -s -o response.txt -w "HTTP %{http_code}\n" -X POST "http://gmpm.gmclan.org/webhook.php" \
+            -H "Content-Type: application/json" \
+            -H "X-Hub-Signature-256: $SIG" \
+            -d "$BODY"
+          echo "--- response body ---"
+          cat response.txt

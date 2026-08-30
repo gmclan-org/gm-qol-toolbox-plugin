@@ -62,11 +62,20 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 - **Advanced Search** *(`Plugins` menu)* — a project-wide text/*regex** search
   that can exclude whole categories (Objects, Scripts, Sequences, Rooms,
   Notes, Timelines, Shaders) or a specific Asset Browser group by name
-  (e.g. skip a vendored "Extensions"/"GMLive" folder) — something the
+  (e.g. skip a vendored "Extensions"/"GMLive" folder), or restrict results
+  to resources carrying one of a set of project tags — something the
   native Search & Replace can't do.
+- **Search Variable Overrides** *(`Plugins` menu)* — pick an object, choose
+  which of its Variable Definitions (own or inherited from a parent) to
+  search for, and find every room instance that overrides one of them via
+  its per-instance properties. Can also extend the search to every
+  child/subclass object.
 - **Toolbar buttons** *(IDE main toolbar)* — quick-access buttons for
   `Search and Replace` and `Advanced Search`, next to the native
   collapse/expand-docks button.
+- **Re-run button** *(IDE main toolbar)* — a `Re-run` button between the
+  native `Run` and `Stop` buttons, doing the same thing as `Build > Re-run`.
+  Greyed out when re-running isn't currently available.
 
 **Object Editor**
 
@@ -118,7 +127,9 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   objects into a room, filtered by layer type; selecting something in the
   Asset Tree switches priority back to the Asset Tree (you'll need to
   select in the palette again), so it never blocks the default workflow —
-  both drag-and-drop and `ALT`+click insertion work; dockable.
+  both drag-and-drop and `ALT`+click insertion work; dockable. A name
+  filter plus a tag filter (matching any of the checked project tags) let
+  you narrow down a long list.
 - **Highlighting instances with overrides** *(Room Editor toolbar, or
   hold `I`)* — a red rectangle (50% opacity) around every instance with
   overridden Variables or its own Creation Code.

@@ -4,6 +4,34 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.30.0 — 2026-08-30
+
+- New: "Search Variable Overrides" (`Plugins` menu, also reachable from the
+  Object Editor and the docked Inspector) — pick an object, choose which
+  of its Variable Definitions (own or inherited) to search for, optionally
+  include child/subclass objects, and find every room instance overriding
+  one of them.
+- New: "Re-run" button added to the top toolbar, right after Run and before
+  Stop. Re-runs the last build the same way Build > Re-run does, greyed out
+  when re-running isn't currently available. Can be hidden via a new
+  Preferences toggle (shown by default).
+- New: tag filtering in both "Advanced Search" and "Room Assets Palette" —
+  a "Tags:" dropdown restricts results to resources carrying any of the
+  checked project tags.
+- New: a "Check Asset Usage" button added to the top toolbar, alongside
+  the existing Search and Replace / Advanced Search ones.
+- Fix: Object Editor's green Parent/Variable Definitions icons now also
+  update when the editor was opened from a Room Editor instance, and now
+  count variables inherited from a parent object too (previously stayed
+  grey in both cases).
+- Fix: "Advanced Search" no longer overwrites another tool's results
+  already shown in the shared results panel with its own placeholder
+  text; the "Ignore comments" checkbox is now remembered between openings.
+- Every option on the "GM QoL Toolbox Options" preferences page now starts
+  with the name of the feature it belongs to, making the (long) list
+  easier to scan.
+- The Object/Sprite Editor "Usage" button is now labelled "Find Usages".
+
 ## v0.20.0 — 2026-08-30
 
 - New: "Check Asset Usage" replaces the separate "Check Object Usage" and
