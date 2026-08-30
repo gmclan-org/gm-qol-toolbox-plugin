@@ -48,10 +48,12 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 
 **General addons** (from `Plugins` menu in top bar)
 
-- **Check Object Usage** *(`Plugins` menu)* — finds where a given object
-  is used (objects, rooms, parents, code).
-- **Check Sprite Usage** *(`Plugins` menu)* — finds where a given sprite
-  is used (objects, rooms, code), plus an orphan-sprite finder.
+- **Check Asset Usage** *(`Plugins` menu)* — a unified usage-checker window
+  covering Objects, Sprites, and Rooms: finds where a given asset is used
+  (objects, rooms, parents, code, room-object variable definitions), or
+  finds orphaned Objects/Sprites nothing references. Scope checkboxes let
+  you skip the GML-code scan or the other `.yy`-file scan, and filter out
+  matches inside comments.
 - **GM QoL Toolbox Options** *(`File > Preferences`, or `Plugins` menu)*
   — a real preferences page to turn every feature below on or off
   individually, plus a couple of settings like how many recent resources
@@ -68,12 +70,9 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 
 **Object Editor**
 
-- **Usage button** *(Object Editor)* — opens the full Check Object Usage
-  report for the object you're currently editing, without leaving its
+- **Usage button** *(Object Editor)* — opens the Check Asset Usage window
+  pre-filled for the object you're currently editing, without leaving its
   edit window.
-- **Usage section** *(docked Inspector, when an object is selected)* — a
-  collapsed-by-default summary of the same usage data, for a quick glance
-  without opening the full report window.
 - **Green section icons** *(Object Editor)* — the Parent and Variable
   Definitions icons light up when that section actually has content.
 - **Opening the collision object from the Events window** *(Object
@@ -88,17 +87,9 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 
 **Sprite Editor**
 
-- **Check Sprite Usage** *(`Plugins` menu)* — finds where a given sprite
-  is used (objects, rooms, code), plus an orphan-sprite finder. Only
-  added if the separate SpriteUsage plugin isn't already installed —
-  that one already provides this, so this plugin steps aside instead of
-  duplicating it.
-- **Usage button** *(Sprite Editor)* — opens the full Check Sprite Usage
-  report for the sprite you're currently editing, without leaving its
+- **Usage button** *(Sprite Editor)* — opens the Check Asset Usage window
+  pre-filled for the sprite you're currently editing, without leaving its
   edit window (matches Object Editor's Usage button).
-- **Usage section** *(docked Inspector, when a sprite is selected)* — a
-  collapsed-by-default summary of the same usage data, for a quick glance
-  without opening the full report window.
 
 **Image Editor**
 

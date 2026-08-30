@@ -4,6 +4,27 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.20.0 — 2026-08-30
+
+- New: "Check Asset Usage" replaces the separate "Check Object Usage" and
+  "Check Sprite Usage" tools with one unified window covering Object,
+  Sprite, and Room:
+  - Pick an asset type and asset, then "Check usage" or "Find orphans"
+    (Find orphans applies to Object/Sprite only).
+  - Room usage now also checks every Object's Variable Definitions list
+    for Asset-type variables pointing at that room.
+  - Scope checkboxes let you skip the GML code scan or the other `.yy`
+    files scan; an "Ignore comments" option filters GML matches inside
+    comments.
+  - "Search also for all children" (Object only) extends the check to
+    every descendant object too.
+- New: "Recent Resources" now allows searching. Also includes GM Native "Recent" item from Asset Browser on project load, so even some item closed in previous session are now appearing in the list.
+- Fix: the Advanced Search / Check Asset Usage results panel could show a
+  blank or stale status line, including losing the "Done in Xs. N
+  matches" summary on a 0-result search.
+- Fix: the Preferences ("GM QoL Toolbox Options") page's scrollbar could
+  get stuck at the bottom when opened from the Plugins menu.
+
 ## v0.19.3 — 2026-08-29
 
 - Third GMPM release (verifying GMPM webhook notification on publish).
