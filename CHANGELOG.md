@@ -4,6 +4,34 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.40.0 — 2026-11-14
+
+- New: an "Add to Favourites" heart in the Object and Sprite editor
+  windows (next to the Name field) — adds/removes the asset to/from the
+  Asset Tree's Favourites. White when it's a favourite. Can be turned off
+  in Preferences.
+- New: "Copy Name" added next to "Find in Resource Tree" in the right-click
+  menu of resource editor windows/tabs.
+- New: right-click menu of the Room Editor's layer item list now has "Edit
+  Asset" (opens the asset's editor in the workspace), "Find in Resource
+  Tree", "Copy Name" and "Copy Unique ID". Each has its own Preferences
+  switch.
+- New: "Move Assets" can now move only tile layers ("All tile layers"),
+  and offers three ways to handle tile layers: shift the tiles by grid
+  cells (default), move the layer offset by pixels, or skip them. The tile
+  options are hidden when the chosen scope has no tile layers.
+- Fix: the Width/Height ("Scale in px") rows no longer push the bottom
+  fields of the Room Editor's instance/graphic properties windows out of
+  view — the window now really grows to fit.
+- Fix: the lens button in Object Editor's Variable Definitions could sit
+  too far right, covering the default buttons, the first time the window
+  was opened after starting the IDE.
+- Removed: the "Search overrides" button from the docked Inspector (it
+  stays in the Object Editor and in a room instance's Variable
+  Definitions window), since the Inspector can show several selected
+  assets at once.
+- Tested on GameMaker Beta 2026.100.0.1199, ahead of the next LTS.
+
 ## v0.30.0 — 2026-08-30
 
 - New: "Search Variable Overrides" (`Plugins` menu, also reachable from the

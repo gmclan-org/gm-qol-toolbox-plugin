@@ -79,6 +79,9 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 
 **Object Editor**
 
+- **Add to Favourites heart** *(Object Editor and Sprite Editor)* — a
+  heart next to the Name field toggles the asset in the Asset Tree's
+  Favourites; can be turned off in Preferences.
 - **Usage button** *(Object Editor)* — opens the Check Asset Usage window
   pre-filled for the object you're currently editing, without leaving its
   edit window.
@@ -108,8 +111,12 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 
 **Navigation**
 
-- **`Find in Resource Tree`** *(right-click a resource window/tab)* —
-  selects it in the Asset Tree.
+- **`Find in Resource Tree`** / **`Copy Name`** *(right-click a resource
+  window/tab)* — selects it in the Asset Tree / copies its name.
+- **`Edit Asset`**, **`Find in Resource Tree`**, **`Copy Name`**, **`Copy
+  Unique ID`** *(Room Editor: right-click an instance/asset in a layer's
+  list)* — open the asset's editor in the workspace, find it in the Asset
+  Tree, copy its name or the item's unique name.
 - **`Rearrange Windows`** *(right-click empty workspace canvas)* — lines
   up open windows into a column when gaps appear after closing some of
   them.
@@ -122,7 +129,9 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
 **Room Editor**
 
 - **Move Assets** *(Room Editor toolbar, or the `M` key)* — shifts the
-  selected layer or all layers by a given offset.
+  selected layer, all layers, or only the tile layers by a given offset.
+  Tile layers can be shifted cell by cell (the tiles themselves move),
+  moved by a pixel offset, or skipped.
 - **Room Assets Palette** *(Room Editor toolbar)* — quickly insert
   objects into a room, filtered by layer type; selecting something in the
   Asset Tree switches priority back to the Asset Tree (you'll need to

@@ -1,6 +1,6 @@
 {
   "name": "GmclanToolboxPlugin",
-  "bundle_version": "0.30.0",
+  "bundle_version": "0.40.0",
   "bundle_description": "GM QoL Toolbox (gmclan.org) - adds a Plugins menu with project tooling.",
   "required": false,
   "feature_flag": null,
@@ -8,22 +8,22 @@
     {
       "plugin_name": "GmclanToolboxPlugin",
       "localised_name": "GM QoL Toolbox",
-      "plugin_version": "0.30.0",
+      "plugin_version": "0.40.0",
       "type": "System",
       "plugin_data": null,
       "description": "GM QoL Toolbox - adds a Plugins menu with a Check Object Usage command.",
       "required_assemblies": [
         {
           "assembly_name": "GmclanToolboxPlugin",
-          "version": "0.30.0",
+          "version": "0.40.0",
           "path": "GmclanToolboxPlugin.dll",
-          "checksum": "1HrON6wFaNVxuc4gxDdDT36hdcwySa4hXMOe1Ea8gFk="
+          "checksum": "V96yfRVRIVltM19IO5oMG\u002BAuzCxoqLHLD2ldiJuFKvE="
         }
       ],
       "dependencies": []
     }
   ],
   "author": "gmclan.org",
-  "signature": "cVvbEHnT425L2Tkr\u002BCVj7WK0tyuWUmFNRR8iGW8TMu6Q/HBcxPm8hVreHkxz1d1/\u002BGt/f95cnQNEYXqFvSauAJ2QfA9XexPfx8kFZ6C3skY0LPfqU8E1ZVCS2iKynVuFKmFFsVqjbILzt4Jj5EQm8jRShdkM5KP1kZidGM/W92RfSllRQK/5\u002B4Ei3PQh7ubIzh5a0KIlCv9iD0IYc\u002BeIg09ICUMg2bLxG8A3A0NblVIWO1cbKzB256H9JmFeR8aHfkk2WhgYrWRy63\u002BnNx2Vy3G/5J20tYmmI9zuKBdYAOHHyyhMEZLrjWpAKBzCBfGLAKfHi/t6T0RJiH3IbeU2OA==",
-  "verify": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxlhuzPA1WXgg4V2jo8gmOqXc\u002BvN/Yt4xUAycrKk6PrCl9IGr2QW4YUPkfz4qWXyD/eHlC3kFU3fHB7ECYrgnO4P2mi7/2PELmkfNfeCgAP4xomF8ATGLB1koPY8hBrnzMikVNuAGghMCZaTRWuw9k68FGw5MQzbAikqb59Sxpuv0H2jVvnmRUhtNZcTC0TcygJ8CGbA7KUxjsDOWM/mFkGOfIj7Ma7w5SgHHiF2LJE09VvxUZIieXdvtmc7p2vrIMDuIq\u002BSKouSg84ML1jF2\u002B/ic7v6Mc77aB75ycuRJlWiMa8c/nJRe7bJX4sHfqz4RbFHdh86aa\u002BtMVnU3E/sDrQIDAQAB"
+  "signature": "Kx4ENx6016dXJIUEOociB4L9StBthVNPV\u002BlbJIiTtTFt9S\u002BtCAzG3PzLVvJILxQRsCIzK3AEL66aDw7ciR8NRpguL/0gH\u002B9q42VvHYPR2W/3wqWoNXlMF9mC0yCV52Qu4ILt/RusY08D9M6DNujy8\u002BnjZRNh7LYZ8AJQRCyiN6eQr6ohOEeSVEg26HJaAx7Tp\u002BYh6hXNZhIzhMsGnXL32tnT5mJ\u002BtOtagZdy0e9HwcTvHgLgw55dG30hHkK2JgCTuc0o\u002BmwW97CIWpuSh4b4wixpQ0bfljMKi2LLTwD/Uj3jXnx7h/tmi62Qc7Gi9DF4wOsepk7Egs75ypFxx\u002B5EsQ==",
+  "verify": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvjRFtHaJ8yf/XFtUcC2pavhL4\u002BllJ\u002BjOySN9zwFdyLNSY80ymvwWm77xws\u002BeLF7W4Eg93s54juSkvn2isJAwO1CmkiinPS419sjHgIWCO3d0DM2KZtigeMCo9OJRzLj1aVkpv8gBbL\u002BeapjTJYjQOtvEIuumSwb0gdc7PMnFhtJdfGppvczD1oBBW2AXFh8MdOZo7mhngBRg4fM\u002BDSgxkK1h2GqTyxGVKBKLjiA0YkGWDex/2JvxYMVmdpqXKKPqlZsBcvaaS/rZJJAS203JJqPlO57CTbLn\u002BViBVRiT2HZbLKl8HNiuy9I/fpBYGgenqBjP9tc1jBrNAj/8dDaxNQIDAQAB"
 }

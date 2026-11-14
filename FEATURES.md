@@ -11,13 +11,14 @@ Quick jump:
   * [Plugins → Search Variable Overrides](#search-variable-overrides)
   * [IDE main toolbar — quick-access buttons](#toolbar-buttons)
   * [Plugins → Check Asset Usage](#check-asset-usage)
+  * [Object / Sprite Editor — Add to Favourites heart](#favourite-heart)
   * [Object Editor — green section icons](#object-editor-green-icons)
   * [Object Editor — opening the collision object](#object-editor-events-open-collision)
   * [Object Editor — `Collision (Select)...`](#object-editor-collision-select)
   * [Object Editor — force minimal width for Events window](#object-editor-events-min-width)
   * [Image Editor — `Convert to Frames` Auto checkbox](#image-editor-convert-to-frames-auto)
   * [`F11` — collapsing/expanding the bottom dock](#f11-bottom-dock)
-  * [Resource editors — `Find in Resource Tree`](#find-in-resource-tree)
+  * [Resource editors / Room Editor — `Find in Resource Tree`, `Copy Name`, `Edit Asset`](#find-in-resource-tree)
   * [Workspace — `Rearrange Windows` / `Close All Windows`](#rearrange-close-windows)
   * [`Shift+F4` — Recent Resources](#shift-f4-recent-resources)
   * [Room Editor — Move Assets](#room-editor-move-assets)
@@ -89,8 +90,8 @@ Quick jump:
   then layer. Each result opens the matching room and selects the
   instance.
 - Also reachable directly from the Object Editor (a button next to
-  Variable Definitions) and from the docked Inspector, pre-filled for the
-  object being edited.
+  Variable Definitions) and from a room instance's Variable Definitions
+  window, pre-filled for the object being edited.
 
 ![Search Variable Overrides window](images/search-vd-main.png)
 ![Search Variable Overrides window](images/search-vd-vd.png)
@@ -156,6 +157,20 @@ Quick jump:
 ![Check Asset Usage window](images/check-asset-usage.png)
 ![Object Usage button](images/asset-usage-object.png)
 ![Object Usage button](images/asset-usage-sprite.png)
+
+### <a id="favourite-heart"></a>Object / Sprite Editor — "Add to Favourites" heart
+
+- A small heart in the top-left area of the Object and Sprite edit windows
+  (next to the **Name** field) adds the asset you're editing to — or
+  removes it from — the Asset Tree's **Favourites**.
+- It is the very same list as the Asset Tree's right-click
+  `Add to Favourites` / `Remove from Favourites` and the `Quick Access >
+  Favourites` node, so both always agree: **white** heart = favourite,
+  grey = not. The tooltip says which action a click will do.
+- Can be turned off in Preferences (`Add to Favourites: Heart button in
+  Object and Sprite editor windows`), shown by default.
+
+![Add to Favourites heart](images/obj-spr-favourite.png)
 
 ### <a id="object-editor-green-icons"></a>Object Editor — green section icons
 
@@ -230,17 +245,39 @@ Quick jump:
 
 ![F11](images/press-f11.png)
 
-### <a id="find-in-resource-tree"></a>Resource editors — `Find in Resource Tree`
+### <a id="find-in-resource-tree"></a>Resource editors / Room Editor — `Find in Resource Tree`, `Copy Name`, `Edit Asset`
 
-- Right-click on the title bar/tab of any open resource editor → `Find in
-  Resource Tree` selects and scrolls to that resource in every open Asset
-  Browser (expanding parent folders along the way). If no Asset Browser
-  is open, the option does nothing.
+Two places get these shortcuts: a resource editor's title bar/tab, and the
+right-click menu of the Room Editor's per-layer item list.
+
+**Resource editor title bar / tab** (right-click):
+
+- `Find in Resource Tree` selects and scrolls to that resource in every
+  open Asset Browser (expanding parent folders along the way). If no Asset
+  Browser is open, the option does nothing.
+- `Copy Name` copies the resource's name to the clipboard.
 - Works for all 15 resource types in the New Asset menu: Object, Sprite,
   Sound, Script, Note, Shader, Animation Curve, Extension, Font, Path,
   Tile Set, Timeline, Particle System, Room, Sequence.
 
 ![Find in asset browser](images/find-in-asset-browser.png)
+
+**Room Editor — item list on a layer** (right-click an instance/asset,
+right under `Open Properties`):
+
+- `Edit Asset` opens the asset's own editor in the workspace — same as a
+  double-click in the Asset Browser, not the room editor's item
+  properties window (for an instance: the Object Editor).
+- `Find in Resource Tree` and `Copy Name` — same as above, acting on the
+  asset the item is based on.
+- `Copy Unique ID` copies the item's own name (e.g. `inst_19F…`), which is
+  unique within the room.
+- With several items selected, `Copy Name`/`Copy Unique ID` copy one per
+  line; `Edit Asset` and `Find in Resource Tree` use the first one.
+- Each entry has its own switch in Preferences (`Copy Unique ID` follows
+  `Copy Name`).
+
+![Room instance context menu](images/room-instance-context.png)
 
 ### <a id="rearrange-close-windows"></a>Workspace — `Rearrange Windows` / `Close All Windows`
 
@@ -289,12 +326,21 @@ Quick jump:
   (like `Shift Path` in the Path Editor).
 - Opens a small window with **X (px)** and **Y (px)** fields (positive or
   negative values — X has autofocus) and a choice of **This layer** /
-  **All layers**.
+  **All layers** / **All tile layers** (only tile layers, in the whole
+  room — instances and assets stay where they are).
+- A **Tile layers** section appears when the chosen scope contains at
+  least one tile layer (hidden otherwise), with three modes:
+  - **Shift tiles by X/Y grid cells** (default) — X/Y are grid cells; the
+    tiles themselves move inside the layer. The layer's size doesn't
+    change: tiles pushed past an edge are dropped and the vacated cells
+    are left empty.
+  - **Move offset by X/Y px** — X/Y are pixels; the tile layer's offset
+    changes, the tile data stays the same.
+  - **Skip tile layers** — tile layers are left untouched.
 - On **OK**, if X or Y is non-zero, moves by the given amount:
   - every instance/asset on the selected layer (or on every layer in the
     room, including their sub-layers),
-  - tile layers are moved as a whole (layer offset, not individual
-    tiles).
+  - tile layers according to the mode chosen above.
 - The whole move is a single Undo step (`Ctrl+Z` undoes it all at once).
 - A plain (unmodified) press of the `M` key opens this window immediately
   for the currently visible room editor — same as clicking the button.
