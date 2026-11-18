@@ -162,6 +162,18 @@ Made by @gnysek from [gmclan.org](https://gmclan.org).
   continuous string, ready to paste into an external tool (e.g.
   Photoshop) to design a matching pixel font.
 
+**Workspace tabs**
+
+- **Split Workspace buttons** *(tab strip)* — "Split Vertically /
+  Horizontally" icons and a "Close Split Workspace" X right in the tab
+  strip, so you don't have to dig through the menu.
+
+**Preferences**
+
+- **Search settings** *(File > Preferences)* — a search box above the
+  category tree, like in JetBrains IDEs: type 2+ characters to narrow the
+  tree down to matching settings and highlight them.
+
 If new preferences are added in future releases, it will show default GM notification balloon with link to Preferences window, so you can disable what you don't like. By default all features are enabled.
 
 ## Requirements

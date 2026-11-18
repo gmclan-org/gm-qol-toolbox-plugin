@@ -26,6 +26,8 @@ Quick jump:
   * [Room Editor — highlighting instances with overrides (`I`)](#room-editor-highlight-overrides)
   * [Room Editor / Inspector — Width/Height in pixels ("Scale in px")](#room-editor-width-height)
   * [Font Editor — `Copy Range as Text`](#font-editor-copy-range)
+  * [Workspace tabs — split buttons](#workspace-split-buttons)
+  * [File > Preferences — search box](#preferences-search)
 
 ### <a id="gm-qol-toolbox-options"></a>GM QoL Toolbox Options
 
@@ -436,3 +438,35 @@ right under `Open Properties`):
 
 ![Copy Range](images/copy-range-before.png)
 Results in `!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_``abcdefghijklmnopqrstuvwxyz{|}~ÓóĄąĆćĘęŁłŃńŚśŹźŻż▯`
+
+### <a id="workspace-split-buttons"></a>Workspace tabs — split buttons
+
+- In the tab strip, before the tab-list dropdown: **Split Workspace
+  Vertically** and **Split Workspace Horizontally** icons. Each is hidden
+  while the matching native menu entry would be greyed out.
+- After the dropdown: **Close Split Workspace** (an X).
+- The last tab of a split tile also gets its native X back, which closes
+  the split.
+- Can be turned off in `File > Preferences > GM QoL Toolbox` (Navigation
+  group).
+
+![Workspace split buttons](images/workspace-split-buttons.png)
+
+### <a id="preferences-search"></a>File > Preferences — search box
+
+- At the top of the category tree in `File > Preferences` there is a
+  **Search settings...** box (the IDE's own search field: magnifier, an X
+  to clear it).
+- From **2 characters** on, it matches your text (case-insensitive,
+  "contains") against the **label you actually see** next to each setting.
+- The tree on the left is narrowed to the categories that contain a match
+  (and their parents), expanded, and the first matching page is opened. If
+  the page you are already on still matches, it stays.
+- Matching rows on the page get a light, translucent grey band across the
+  full width — lighter on dark skins, darker on the light skin.
+- Clearing the box restores the full tree.
+- The feature checks at startup that the IDE's internal Preferences
+  structures look as expected; if they do not (e.g. a different GameMaker
+  build) it simply does not start and leaves Preferences untouched.
+
+![Preferences search](images/preferences-search.png)

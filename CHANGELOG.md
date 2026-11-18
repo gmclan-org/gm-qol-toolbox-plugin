@@ -4,6 +4,15 @@ Versions below without a `v` prefix are internal development builds that
 came before the first public release (`v0.15.0`) — never separately
 published here, listed only so the release history makes sense.
 
+## v0.50.0 — 2026-11-18
+
+- New: search box in File > Preferences — a "Search settings..." field above
+  the category tree. From 2 characters it narrows the tree to matching
+  settings, opens the first match and highlights matching rows.
+- New: split-workspace buttons in the tab strip — "Split Vertically /
+  Horizontally" and "Close Split Workspace" right next to the tab list.
+  Can be turned off in Preferences.
+
 ## v0.40.0 — 2026-11-14
 
 - New: an "Add to Favourites" heart in the Object and Sprite editor
